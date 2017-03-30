@@ -1,0 +1,32 @@
+{% extends '::baselayout.html.twig' %}
+
+{% block body %}
+<div class="both">
+    {% if app.user %}
+    <a href="{{ path('mmh_site_homepage') }}"<a/>
+    {% else %}
+  <div class="connection">
+    <h1>Se connecter </h1>
+      {% if app.user|default %}
+    {{ app.user.username|default('Unnamed User') }} | <a href="{{ path('fos_user_security_logout') }}" title="logout">logout</a>
+    {% else %}
+    <br>
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+      <label>Identifiant/Email</label><br>
+      <input type="text" name="_username" required="required" /><br>
+
+      <label>Mot de passe</label><br>
+      <input type="password" name="_password" required="required" /><br>
+
+      <button  class="login-button" type="submit">Se Connecter</button>
+    </form>
+    {% endif %}
+
+  </div>
+  <div class="inscription">
+    {{ render(controller("FOSUserBundle:Registration:register")) }}
+
+  </div>
+</div>
+{% endif %}
+{% endblock %}

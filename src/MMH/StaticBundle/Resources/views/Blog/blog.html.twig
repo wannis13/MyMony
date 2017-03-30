@@ -1,0 +1,31 @@
+{% extends 'MMHStaticBundle::staticlayout.html.twig' %}
+
+{% block title %}{% for article in articleAlone %}{{article.title}}{% endfor %}{% endblock %}
+
+{% block metadescription %}{% for article in articleAlone %}{{article.title}}{% endfor %}{% endblock %}
+
+{% block headtitle %}Le blog de MyMoneyHelp{% endblock %}
+
+{% block section %}
+
+<!-- General wrapper for the content -->
+<div class="wrapper-static-content flex">
+<!-- Main section on the left with text and image content -->
+<section class="static-content-section">
+
+  {% for article in articleAlone %}
+    <h2 id="blog-title">{{ article.title }}</h2>
+          {% for image in article.imagearticle %}
+            {% if image.headimage %}
+              <img class="static-image blog-image" src="{{ app.request.basePath }}{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{image.description}}">
+            {% endif %}
+          {% endfor %}
+          <p>{{ article.content | raw}}</p>
+
+          {% if article.user %}
+          <span>Par {{article.user.username}} le {{ article.datecreation|date('d/m/Y')}}</span>
+          {% endif %}
+
+  {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'MMHStaticBundle::staticlayout.html.twig' %}
+
+{% block title %}Dépôt de projet{% endblock %}
+
+{% block metadescription %}Si vous souhaitez financer un projet solidaire alors vous pouvez le soumettre à l'équipe MyMoneyHelp en remplissant ce formulaire{% endblock %}
+
+
+
+{% block headtitle %}Soumettre un projet{% endblock %}
+
+{% block section %}
+
+<!-- General wrapper for the content -->
+  <div class="wrapper-static-content flex">
+
+    <!-- Main section on the left with text and image content -->
+    <section class="static-content-section">
+      <h2>Déposer votre projet en quelques clics</h2>
+      <p>MyMoneyHelp met en ligne votre projet en deux 2 étapes. C’est simple et rapide.</p>
+      <h3>1. Dépôt et étude de votre projet</h3>
+      <p>Notre comité des projets étudie attentivement tous les projets que nous recevons et une réponse vous sera apportée sous 2
+        semaines à compter du dépôt de votre projet. Si votre projet est retenu, vous recevrez une demande d’accord pour la mise
+        en ligne de votre projet.</p>
+      <h3>2. Mise en ligne de votre projet</h3>
+      <p>Dès que nous aurons réceptionné votre accord, notre équipe se chargera de mettre en ligne votre projet et de vous mettre à
+        disposition nos services d’accompagnement si besoin.</p>
+
+      <h2>Formulaire de dépôt</h2>
+      <p>Pour adresser votre projet à notre comité de projets, remplissez les champs ci-dessous et joignez votre fichier.
+        Notre équipe vous recontactera dans les meilleurs délais. Attention : Les informations que vous nous communiquez ne sont
+        pas transmises à nos partenaires ou à d’autres entreprises.</p>
+
+
+        {{ form_start(form, {'attr': {'class': 'formcontact'}}) }}
+        {{ form_errors(form) }}
+        <div>
+          <p>{{ form_label(form.name) }}</p>
+          {{ form_errors(form.name) }}
+          {{ form_widget(form.name) }}
+        </div>
+        <div>
+          <p>{{ form_label(form.firstname) }}</p>
+          {{ form_errors(form.firstname) }}
+          {{ form_widget(form.firstname) }}
+        </div>
+        <div>
+          <p>{{ form_label(form.email) }}</p>
+          {{ form_errors(form.email) }}
+          {{ form_widget(form.email) }}
+        </div>
+        <div>
+          <p>{{ form_label(form.message) }}</p>
+          {{ form_errors(form.message) }}
+          {{ form_widget(form.message) }}
+        </div>
+         <p>{{ form_row(form.document) }}</p>
+         {{ form_row(form.envoyer) }}
+
+        {{ form_end(form) }}
+
+        {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flashmessage">
+          {{ flashMessage }}
+        </div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="errormessage">
+          {{ flashMessage }}
+        </div>
+        {% endfor %}
+
+{% endblock %}

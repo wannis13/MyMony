@@ -1,0 +1,34 @@
+mmh_static_association:
+    path:     /qui-sommes-nous
+    defaults:
+        _controller: MMHStaticBundle:Static:association
+
+mmh_static_soutenir:
+    path:     /nous-soutenir
+    defaults:
+        _controller: MMHStaticBundle:Static:soutenir
+
+mmh_static_contact:
+    path:     /contact
+    defaults:
+        _controller: MMHStaticBundle:Static:contact
+
+mmh_static_deposer:
+    path:     /deposer-un-projet
+    defaults:
+        _controller: MMHStaticBundle:Static:deposer
+
+mmh_static_mentions:
+    path:     /mentions-legales
+    defaults:
+        _controller: MMHStaticBundle:Static:mentions
+
+mmh_static_conditions:
+    path:     /conditions-generales
+    defaults:
+        _controller: MMHStaticBundle:Static:conditions
+
+mmh_static_blog:
+    path:     /blog/{slug}
+    defaults:
+        _controller: MMHStaticBundle:Static:blog

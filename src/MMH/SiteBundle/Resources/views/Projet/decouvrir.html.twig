@@ -1,0 +1,75 @@
+{% extends '::baselayout.html.twig' %}
+
+{% block title %}Découvrir les projets{% endblock %}
+
+{% block metadescription %}Plateforme de financement participatif MyMoneyHelp{% endblock %}
+
+{% block body %}
+
+<section class="static-page-title flex">
+  <h1>Les projets</h1>
+</section>
+
+<section class="cards-home-section">
+    <div class="wrapper-nav">
+        <nav class="cards-home-navbar">
+          <a href="{{ path('mmh_site_decouvrir', {'categorie':0}) }}" class="popular">En cours</a>
+        <div id="menuderoulant">
+          <a href="#" class="category">Catégories</a>
+           <ul>
+             <li><a href="{{ path('mmh_site_decouvrir') }}">Tout</a></li>
+             <li><a href="{{ path('mmh_site_decouvrir', {'categorie':1}) }}">Solidarité, humanitaire, société</a></li>
+             <li><a href="{{ path('mmh_site_decouvrir', {'categorie':2}) }}">Entrepreneuriat, ESS</a></li>
+             <li><a href="{{ path('mmh_site_decouvrir', {'categorie':3}) }}">Sports, santé</a></li>
+             <li><a href="{{ path('mmh_site_decouvrir', {'categorie':4}) }}">Culture, arts, éducation</a></li>
+             <li><a href="{{ path('mmh_site_decouvrir', {'categorie':5}) }}">Autres</a></li>
+          </ul>
+        </div>
+            <form class="card-nav-form-d">
+                <input type="text" placeholder="Chercher Un Projet" class="searchbar-cards-home">
+            </form>
+        </nav>
+
+        <hr class="hr-cards">
+    </div>
+    <div class="wrapper-home-cards">
+        <form class="card-nav-form-m">
+            <input type="text" placeholder="Chercher Un Projet" class="searchbar-cards-home">
+        </form>
+        {% for project in project %}
+        {% if project.visibility %}
+        <div class="home-cards" target="blank">
+            <a href="{{ path('mmh_site_projet', {'slug': project.slug}) }}">
+                <h2 class="card-home-title">{{project.title}}</h2>
+                <div class="img-remplacement">
+                  {% for image in project.imageproject %}
+                    {% if image.headimage %} <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_cards') }}" class="cards-image" /> {% endif %}
+                  {% endfor %}
+                </div>
+                <h2 class="finish-banner">{% if project.status %}En cours {% else %}Terminée {% endif %}</h2>
+                <p class="home-card-description">{{project.headline}}</p>
+                <div class="home-card-stats">
+                  <div class = "progressBar">
+                    <div class = "progression">
+                      <span class="value">
+                        {% set total = 0 %}
+                        {% for payment in project.payment %} {% set total = total + payment.amount %} {% endfor %}
+                        {% set percent = (total / project.finalObjective) *100 %}
+                        {{ percent|round }}%
+                      </span>
+                    </div>
+                  </div>
+                    <div class="card-home-amount">
+                        <p class="amount"> {{total}} €</p>
+                        <p class="contribut">contribué{% if total > 0 %}s{% endif %}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endblock %}

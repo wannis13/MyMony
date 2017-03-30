@@ -1,0 +1,212 @@
+<?php
+
+namespace MMH\SiteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use FOS\UserBundle\Model\User as BaseUser;
+
+
+/**
+ * User
+ *
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="MMH\SiteBundle\Repository\UserRepository")
+ * @Vich\Uploadable
+ */
+class User extends BaseUser
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateInscription", type="datetime")
+     */
+    private $dateInscription;
+
+    public function __construct()
+    {
+        $this->dateInscription = new \DateTime('now');
+        parent::__construct();
+
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="familyname", type="string", length=255, nullable=true)
+     */
+    private $familyname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
+     */
+    private $firstname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bio", type="text", nullable=true)
+     */
+    private $bio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="userImage", type="text", nullable=true)
+     */
+    private $userImage;
+
+    /**
+     * @Vich\UploadableField(mapping="user_images", fileNameProperty="userImage")
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * Set dateInscription
+     *
+     * @param \DateTime $dateInscription
+     *
+     * @return User
+     */
+    public function setDateInscription($dateInscription)
+    {
+        $this->dateInscription = $dateInscription;
+
+        return $this;
+    }
+
+    /**
+     * Get dateInscription
+     *
+     * @return \DateTime
+     */
+    public function getDateInscription()
+    {
+        return $this->dateInscription;
+    }
+
+
+    /**
+     * Set bio
+     *
+     * @param string $bio
+     *
+     * @return User
+     */
+    public function setBio($bio)
+    {
+        $this->bio = $bio;
+
+        return $this;
+    }
+
+    /**
+     * Get bio
+     *
+     * @return string
+     */
+    public function getBio()
+    {
+        return $this->bio;
+    }
+
+    // Trying to implement magic function __toString()
+
+    public function __toString() {
+
+      return " " . $this->username;
+    }
+
+    /**
+     * Set userImage
+     *
+     * @param string $userImage
+     *
+     * @return User
+     */
+    public function setUserImage($userImage)
+    {
+        $this->userImage = $userImage;
+
+        return $this;
+    }
+
+    /**
+     * Get userImage
+     *
+     * @return string
+     */
+    public function getUserImage()
+    {
+        return $this->userImage;
+    }
+    // Image file functions
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+
+    /**
+     * Set familyname
+     *
+     * @param string $familyname
+     *
+     * @return User
+     */
+    public function setFamilyname($familyname)
+    {
+        $this->familyname = $familyname;
+
+        return $this;
+    }
+
+    /**
+     * Get familyname
+     *
+     * @return string
+     */
+    public function getFamilyname()
+    {
+        return $this->familyname;
+    }
+}

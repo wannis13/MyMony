@@ -1,0 +1,63 @@
+{% extends 'MMHStaticBundle::staticlayout.html.twig' %}
+
+{% block title %}Contacter MyMoneyHelp{% endblock %}
+
+{% block metadescription %}Une question ou un besoin d'information ? Remplissez notre formulaire de contact{% endblock %}
+
+
+
+{% block headtitle %}Contactez nous{% endblock %}
+
+{% block section %}
+<!--************************** MAIN CONTENT ********************************-->
+
+<!-- General wrapper for the content -->
+  <div class="wrapper-static-content flex">
+
+    <!-- Main section on the left with text and image content -->
+    <section class="static-content-section">
+      <h2>Contacter MyMoneyHelp</h2>
+      <p>Une question, un besoin d'information ou une requête à nous soumettre ?
+      N'hésitez pas à nous contacter via le formulaire ci-dessous, nous vous répondrons
+      dans les plus brefs délais.</p>
+
+      {{ form_start(form, {'attr': {'class': 'formcontact'}}) }}
+      {{ form_errors(form) }}
+      <div>
+        <p>{{ form_label(form.name) }}</p>
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
+      </div>
+      <div>
+        <p>{{ form_label(form.firstname) }}</p>
+        {{ form_errors(form.firstname) }}
+        {{ form_widget(form.firstname) }}
+      </div>
+      <div>
+        <p>{{ form_label(form.email) }}</p>
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email) }}
+      </div>
+      <div>
+        <p>{{ form_label(form.message) }}</p>
+        {{ form_errors(form.message) }}
+        {{ form_widget(form.message) }}
+      </div>
+       <p>{{ form_row(form.document) }}</p>
+       {{ form_row(form.envoyer) }}
+
+      {{ form_end(form) }}
+
+        {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flashmessage">
+          {{ flashMessage }}
+        </div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="errormessage">
+          {{ flashMessage }}
+        </div>
+        {% endfor %}
+
+{% endblock %}

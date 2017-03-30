@@ -1,0 +1,11 @@
+# Routes for the administration
+
+mmh_admin_admin:
+    path:    /administration
+    defaults:
+        _controller: MMHAdminBundle:Admin:admin
+
+mmh_admin_tableau:
+    path:    /administration/tableau-de-bord/{nom}
+    defaults:
+        _controller: MMHAdminBundle:Admin:tableau

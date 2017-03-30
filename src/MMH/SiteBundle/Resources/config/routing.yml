@@ -1,0 +1,37 @@
+# Dynamic content taking care of the projects
+
+mmh_site_homepage:
+    path:     /
+    defaults:
+        _controller: MMHSiteBundle:Projets:index
+
+
+mmh_site_decouvrir:
+    path:     /decouvrir-les-projets/{categorie}
+    defaults:
+        _controller: MMHSiteBundle:Projets:decouvrir
+        categorie:          generale
+    requirements:
+        categorie: \w*
+
+mmh_site_projet:
+    path:     /projet/{slug}
+    defaults:
+        _controller: MMHSiteBundle:Projets:projet
+
+# Routes for the registration the connexion and the paiement
+
+mmh_site_connexion:
+    path:    /connexion-inscription
+    defaults:
+        _controller: MMHSiteBundle:Transaction:connexion
+
+mmh_site_financement:
+    path:    /financement/{slug}
+    defaults:
+        _controller: MMHSiteBundle:Transaction:financement
+
+mmh_site_membre:
+    path:    /espace/{membre}
+    defaults:
+        _controller: MMHSiteBundle:Transaction:membre

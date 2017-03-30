@@ -1,0 +1,93 @@
+{% extends 'MMHStaticBundle::staticlayout.html.twig' %}
+
+{% block title %}Qui sommes-nous ?{% endblock %}
+
+{% block metadescription %}Découvrez en plus sur notre plateforme de financement participatif, son fonctionnement et ses valeurs{% endblock %}
+
+
+
+{% block headtitle %}Qui Sommes nous ?{% endblock %}
+
+{% block section %}
+<!--************************** MAIN CONTENT ********************************-->
+
+<!-- General wrapper for the content -->
+    <div class="wrapper-static-content flex">
+
+      <!-- Main section on the left with text and image content -->
+      <section class="static-content-section">
+        <h2>Notre plateforme en 3 points</h2>
+        <ol>
+          <li>
+            <h3>Notre plateforme est gratuite</h3>
+            <p>Sans frais ni commissions quel que soit le montant de la collecte.<br><br>
+              MyMoneyHelp est une plateforme indépendante et tous les membres sont des bénévoles.<br><br>
+              Nous soutenons tous les projets créatifs, innovants, qui concilient utilité sociale et efficacité économique.</p>
+              <figure>
+                <img src="{{ asset('bundles/mmhsite/img/content/femme_saut.jpg') }}"  alt="femme sautant avec un ruban" class="static-image">
+              </figure>
+          </li>
+
+          <li>
+            <h3>Nous vous garantissons le versement de tous vos dons quel que soit le montant collecté </h3>
+            <div class="static-headline">
+              <span>Pas de « tout ou rien » !!!</span>
+            </div>
+            <p>Les dons sont versés intégralement et directement aux porteurs de projet.<br><br>
+            Possibilité de prolonger la période de collecte si besoin.<br><br>
+             Besoin de plus de renseignements ? Nous sommes à votre écoute.</p>
+            <figure>
+              <img src="{{ asset('bundles/mmhsite/img/content/homme_grimpe.jpg') }}" alt="homme dessinant une fresque de New-York" class="static-image">
+            </figure>
+          </li>
+
+          <li>
+            <h3>Nous pouvons si besoin accompagner les porteurs de projets</h3>
+            <p>Notre équipe comporte diverses compétences à la disposition des porteurs de projets ;<br>
+            MyMoneyHelp dispose d’un réseau d’acteurs et de partenaires qui peuvent faciliter la réalisation de vos projets ;<br>
+            Vous pouvez nous consulter même si vous n’êtes pas retenu sur notre plateforme.</p>
+            <div class="static-headline">
+              <span>N'hésitez pas à <a href="soumettre-un-projet.html">Déposer votre projet</a></span>
+            </div>
+          </li>
+        </ol>
+
+        <h2>Notre objectif</h2>
+        <p>Les membres de l’association MyMoneyHelp sont tous des bénévoles, animés par la volonté de soutenir des projets ayant une forte utilité sociale, grâce :<br><br>
+        - A la collecte de dons sur la plateforme pour favoriser l’autofinancement des projets ;<br>
+        - Au réseau de compétence solidaire de MyMoneyHelp qui favorise la réussite du porteur de projet.
+        </p>
+        <figure>
+          <img src="{{ asset('bundles/mmhsite/img/content/cocinelles.jpg') }}" alt="cocinelles sur une feuille" class="static-image">
+        </figure>
+        <p>A travers cette plateforme, les membres de MyMoneyHelp proposent le triple don :</p>
+        <ul>
+          <li>
+            <span class="static-don">Le don de  soi :</span>
+            <p>c’est le fait de se rendre disponible pour les autres. Ainsi, tous les membres de MyMoneyHelp soutiennent régulièrement
+            personnellement ou collectivement des grandes causes nationales, telles que la lutte contre le cancer, le don du sang mais
+            aussi la lutte contre le chômage et la pauvreté.</p>
+          </li>
+          <li>
+            <span class="static-don">Le don :</span>
+            <p>c’est-à-dire le talent, la compétence ou le savoir-faire que les membres de l’association mettent de manière désintéressée,
+            au service des projets ayant une forte utilité sociale.<br><br>
+            Les membres de MyMoneyHelp forment aussi un réseau de compétence solidaire au service de la réussite des projets.</p>
+          </li>
+          <li>
+            <span class="static-don">Le don financier :</span>
+            <p>c’est l’appel à notre générosité sous forme de paiements en ligne sur notre site pour soutenir les projets sélectionnés
+            par des experts au sein de du comité des projets de MyMoneyHelp.</p>
+          </li>
+        </ul>
+        <div class="static-headline">
+          <span>Pour plus d'informations <a href="contact.html">Contactez-nous</a></span>
+        </div>
+
+
+    <!--************************* /MAIN CONTENT ********************************-->
+
+
+
+
+{% endblock %}

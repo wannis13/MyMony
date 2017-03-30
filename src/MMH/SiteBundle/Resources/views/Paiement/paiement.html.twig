@@ -1,0 +1,94 @@
+{% extends '::baselayout.html.twig' %}
+{% block body %}
+
+
+
+<section class="static-page-title flex">
+  {% for project in project %}
+
+  <h1>Soutenir {{ project.title }}</h1>
+
+</section>
+
+<div class="wrapper-paiement">
+    <div class="checkbox">
+        <!-- checkbox choix montant -->
+        <h2 class="title-checkbox"> Montant de votre contribution :</h2>
+        {% set count = 1 %}
+        {% for value in project.values %}
+          <label for="cbox{{ count }}"> {{ value }}€ </label>
+          <input class="euro" type="checkbox" id="cbox{{ count }}" value="{{ value}}">
+        {% set count = count + 1 %}
+        {% endfor %}
+    </div>
+
+    <!-- Detail du paiement -->
+
+    <div class="resume-paiement">
+        <div class="project-resume">
+            <h2 class="paiement-validation">Projet</h2>
+            <img class="jardin" src="{{ asset('bundles/mmhsite/img/projets/jardin.jpg') }}" alt="jardin-travail">
+            <p class="text-project">{{ project.headline }}.</p>
+        </div>
+
+
+        <div class="don">
+            <h2 class="paiement-validation"> Don </h2>
+            <p class="text-project"> 10€ </p>
+
+        </div>
+        <div class="don-gift">
+            <h2 class="paiement-validation"> Vous recevrez </h2>
+            <p class="text-project3"> Un grand merci sur facebook et votre nom sur le générique du film !</p>
+
+        </div>
+    </div>
+    <div class="valid-paiement">
+        <div class="checkbox2">
+            <!-- Moyen de paiement -->
+            <h2 class="moyen-paiement">Moyen de paiement : </h2>
+            <label>
+                <input type="checkbox" id="cbox1" value="premiere_checkbox"> chèque </label>
+
+            <input type="checkbox" id="cbox2" value="deuxieme_checkbox">
+            <label for="cbox2"> payplug </label>
+        </div>
+
+
+        <form class="form-style flex" action="paiement.html" method="post">
+
+            <h2 class="moyen-paiement">Informations personnelles(ces informations resteront confidentielles) :</h2>
+
+
+            <input class="form-color" type="text" id="Nom" name="user_surname" placeholder="Nom">
+            <br>
+            <br>
+
+            <input class="form-color" type="text" id="Prénom" name="user_name" placeholder="Prénom">
+            <br>
+            <br>
+
+            <input class="form-color" type="email" id="mail" name="user_email" placeholder="Adresse mail de facturation">
+            <br>
+            <br>
+
+
+        </form>
+
+
+        <div class="contribute">
+            <a href="#" class="contribute-button">Contribuer (10€)</a>
+        </div>
+
+
+
+    </div>
+    <!-- end detail du paiement-->
+    {% endfor %}
+
+
+</div>
+<!-------- End  Wrapper------->
+
+
+{% endblock %}

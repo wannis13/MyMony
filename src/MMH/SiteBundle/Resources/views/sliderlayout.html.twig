@@ -1,0 +1,150 @@
+{% extends '::baselayout.html.twig' %}
+
+{% block body %}
+
+<!--***************************** SLIDER *********************************-->
+
+<section class="slider">
+    <!-- Carousel wrapper for higher res -->
+    <div class="slider-wrapper flex">
+        <!-- Pictures -->
+        <div class="carousel">
+            <ul>
+              {% set count = 1 %}
+                {% for project in projectSlider %}
+                    {% for image in project.imageproject %}
+                    <!-- Display project head image -->
+                      <li>
+                          <figure><a href="{{ path('mmh_site_projet',{'slug':project.slug}) }}"><img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_carousel')  }}" alt="" class="slide-picture slide{{count}} {% if count == 1 %} active {% endif %}" /></a></figure>
+                      </li>
+                    {% endfor %}
+                {% set count = count + 1 %}
+              {% endfor %}
+            </ul>
+
+            <!-- Arrows -->
+            <div class="arrow-left arrow">
+                <img src="{{ asset('bundles/mmhsite/img/left-arrow.png') }}" class="arrows" onclick="changeImage('previous')" alt="flèche gauche" />
+            </div>
+
+            <div class="arrow-right arrow">
+                <img src="{{ asset('bundles/mmhsite/img/right-arrow.png') }}" class="arrows" onclick="changeImage('next')" alt="flèche droite" />
+            </div>
+            <!-- /Arrows -->
+
+            <!-- Circles -->
+            <div class="carousel-circles flex">
+                <div class="circle1" onclick="pickASlide('0')"></div>
+                <div class="circle2" onclick="pickASlide('1')"></div>
+                <div class="circle3" onclick="pickASlide('2')"></div>
+            </div>
+            <!-- /Circles -->
+        </div>
+        <!-- /Pictures -->
+
+        <div class="carousel-info">
+            <!-- Info Panel Wrapper -->
+            <div class="carousel-info-wrapper flex">
+              <!-- Loop start -->
+              {% set count2 = 1 %}
+                {% for project in projectSlider %}
+                  {% if project.slider %}
+                  <!-- Slide  -->
+                  <div class="slide slide{{count2}}-txt {% if count2 == 1 %} active {% endif %}">
+                      <!-- Title -->
+                      <h2 class="slide-title">{{ project.title }}</h2>
+                      <!-- /Title -->
+                      <!-- Texte -->
+                      <div class="slide-text">
+                          <p>
+                            <!-- Replace every <p> to avoid line break -->
+                            {% set char = project.text | replace({"<p>":' ', "</p>":' '})  %}
+                            <!-- Split the text after the first 189 characters -->
+                            {% set char = char | split('') %}
+                            {% set char = char | slice(0, 189) %}
+                            {% set char = char | join('') %}
+                            <!-- Display text and compute html tags instead of displaying them -->
+                            {{char | raw}}...
+                          </p>
+                      </div>
+                      <!-- /Texte -->
+                      <!-- Contribute ! -->
+                      <div class="contribute">
+                          <a href="{{ path('mmh_site_financement',{'slug':project.slug}) }}" class="button slider-button">Contribuer</a>
+                      </div>
+                      <!-- /Contribute -->
+                      <!-- Stats -->
+                      <div class="slide-stats flex">
+                        <!-- Compute stats values -->
+                        {% set backers = 0 %}
+                        {% set contributed = 0 %}
+
+                        {% for payment in project.payment %}
+                          {% set contributed = contributed + payment.amount %}
+                          {% set backers = backers + 1 %}
+                        {% endfor %}
+
+                          <div class="stat flex">
+                            <!-- % of project objective already backed up -->
+                              <span>{{ ((contributed / project.finalObjective) * 100) | round }}%</span>
+                              <p>Financé</p>
+                          </div>
+
+                          <div class="stat flex">
+                            <!-- Amount contributed -->
+                              <span>{{contributed}}€</span>
+
+                              <p>contribués</p>
+                          </div>
+
+                          <div class="stat flex">
+                            <!-- Final Objective -->
+                              <span>{{ project.finalObjective }}€</span>
+
+                              <p>objectif</p>
+                          </div>
+
+                          <div class="stat flex">
+                            <!-- Number of backers -->
+                              <span>{{backers}}</span>
+
+                              <p>Supporteurs</p>
+                          </div>
+
+                          <!-- Project remaining days -->
+                          <div class="stat flex">
+                              {% set endDate = project.endDate | date('U') %}
+                              {% set currentDate = "now" | date('U') %}
+                              {% set remainingDays = endDate - currentDate %}
+
+                              <span>
+                                {% if remainingDays <= 0 %}
+                                Finie
+                                {% else %}
+                                J-{{ (remainingDays / 86400) | round }}
+                                {% endif %}
+                              </span>
+                          </div>
+                      </div>
+                      <!-- /Stats -->
+                  </div>
+                  <!-- /Slide 1 -->
+
+                  {% set count2 = count2 + 1 %}
+                {% endif %}
+              {% endfor %}
+            </div>
+            <!-- /Info Panel Wrapper -->
+
+        </div>
+        <!-- Carousel Info -->
+    </div>
+    <!-- /Carousel wrapper -->
+</section>
+
+<!--***************************** /SLIDER **********************************-->
+{% block section %}
+
+{% endblock %}
+
+{% endblock %}

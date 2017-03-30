@@ -1,0 +1,199 @@
+{% extends '::baselayout.html.twig' %}
+{% block body %}
+{% for project in project %}
+
+<!-- project image -->
+<div class="container">
+  <figure class="project-image-container">
+    {% for image in project.imageproject %}
+    {% if image.headimage %} <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_carousel') }}"  /> {% endif %}
+    {% endfor %}
+  </figure>
+  <!-- project details -->
+  <section class="header-text">
+    <h1>{{project.title}}</h1>
+
+    <!-- <h1>Un winch pour rider sur l'eau<br>avec l'association WaterWood</h1> -->
+    <div class="row">
+      <div class="second circle">
+        <strong></strong>
+      </div>
+      <div class="left-bar">
+        {% set total = 0 %}
+        {% set supp = 0 %}
+        {% for payment in project.payment %} {% set total = total + payment.amount %}
+        {% set supp = supp + 1 %}
+        {% endfor %}
+        <p>{{total}} € Contribué{% if total > 0 %}s{% endif %}</p>
+        <p>{{project.finalObjective}} € Objectif</p>
+        <p> {{supp}} supporteur{% if supp > 0 %}s{% endif %}</p>
+
+        {% set endDate = project.endDate | date('U') %}
+        {% set currentDate = "now" | date('U') %}
+        {% set remainingDays = endDate - currentDate %}
+
+        <p>
+          {% if remainingDays <= 0 or remainingDays == 0 %}
+          Finie
+          {% else %}
+          J-{{ (remainingDays / 86400) | round }}
+          {% endif %}
+        </p>
+      </div>
+    </div>
+    <div>
+      <p>
+        {{project.headline}}.
+      </p>
+      <ul class="social-networks">
+        <li>
+          <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/facebook_vert.png') }}" class="social-icons" alt="Twitter" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/google-plus_vert.png') }}" class="social-icons" alt="Google plus" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/linkedin_vert.png') }}" class="social-icons" alt="Linkedin" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/twitter_vert.png') }}" class="social-icons" alt="Twitter" /></a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+{% endfor %}
+{% block section %}{% endblock %}
+<!-- /project details -->
+<aside class="proposer">
+  {% for project in project %}
+  <!-- contribute button -->
+  <div class="contribute">
+      <a href="{{ path('mmh_site_financement',{'slug':project.slug}) }}" class="button slider-button">Contribuer</a>
+  </div>
+  <!-- /contribute button -->
+  {% endfor %}
+
+  {% for project in project %}
+  <div class="proposer-info">
+
+<!-- Check if a user is associated to the projetc and display the information otherwise no-->
+    {% if project.user %}
+      <h1>{{[project.user.username,project.user.familyname]|join(' ')}}</h1>
+
+<!-- Check if the user as an avatar if not display a random avatar -->
+      {% if project.user.userImage %}
+      <figure>
+        <img src="{{ vich_uploader_asset(project.user, 'imageFile') | imagine_filter('my_avatar') }}" />
+      </figure>
+      {% else %}
+        <img src="{{ asset('bundles/mmhsite/img/user_images/avatar.png') }}" alt="icone d'un avatar"/>
+      {% endif %}
+      <p>
+        {{project.user.bio}}
+      </p>
+      {% else %}
+      <p>Pas d'info sur sur porteur de projet</p>
+    </div>
+  {% endif %}
+
+  {% endfor %}
+
+  <!-- Top contributors -->
+
+  <div class="contributors">
+    <h2>Top contributions:</h2>
+
+
+    {% for project in project %}
+
+<!-- Loop to get the different payment value available -->
+      {% for value in project.values %}
+        <p class= "ten span">
+          <span>{{ value }}</span>
+
+<!-- Variable to count the number of payments for a specifique amount/value -->
+          {% set totalpayments = 0 %}
+
+          {% for payment in project.payment %}
+            {% if payment.amount == value.__toString %}
+              {% set totalpayments = totalpayments + 1 %}
+            {% endif %}
+          {% endfor %}
+
+
+<!-- Display the total number of matched payments with the value and the image -->
+          <i>{{ totalpayments}}</i>
+          <img src="{{ asset('bundles/mmhsite/img/group.png') }}" alt="" /></p>
+        </p>
+      {% endfor %}
+
+<!-- Display the comments associated to the project -->
+      <h2>Les derniers commentaires:</h2>
+      {% if project.comments %}
+
+<!-- Loop to count the number of comments to display -->
+      {% set break = true %}
+      {% set loopCount = 0 %}
+
+        {% for comment in project.comments if break %}
+          <p class="comment">
+            {{comment.content}}<br>
+            <span>{{" Par "}}{{comment.author}}{{" le "}}{{comment.date|date("d/m/Y")}}</span>
+          </p>
+<!-- After three tours the break is set to false and it breaks the loop -->
+          {% set loopCount = loopCount + 1 %}
+          {% if loopCount >= 3 %}
+            {% set break = false %}
+          {% endif %}
+        {% endfor %}
+
+      {% else %}
+      {{"Pas encore de commentaires"}}
+      {% endif %}
+
+<!-- Form to leave a comment   -->
+      <h3>Laissez-nous un commentaire</h3>
+
+      {{ form_start(form, {'attr': {'class': 'formcomment'}}) }}
+      {{ form_errors(form) }}
+      <div>
+        {{ form_errors(form.content) }}
+        {{ form_widget(form.content) }}
+      </div>
+      <div>
+        {{ form_errors(form.author) }}
+        {{ form_widget(form.author) }}
+      </div>
+      {{ form_end(form) }}
+
+<!-- List of the social medias -->
+      <ul class="social-networks">
+        {% if project.facebook %}
+          <li>
+            <a href="{{ project.facebook }}" target="_blank"><img src="{{ asset('bundles/mmhsite/img/logos_RS/facebook_vert.png') }}" class="social-icons" alt="logo facebook" /></a>
+          </li>
+        {% endif %}
+        {% if project.twitter %}
+          <li>
+            <a href="{{ project.twitter }}" target="_blank"><img src="{{ asset('bundles/mmhsite/img/logos_RS/twitter_vert.png') }}" class="social-icons" alt="logo twitter" /></a>
+          </li>
+        {% endif %}
+        {% if project.linkedin %}
+          <li>
+            <a href="{{ project.linkedin }}" target="_blank"><img src="{{ asset('bundles/mmhsite/img/logos_RS/linkedin_vert.png') }}" class="social-icons" alt="logo linkedin" /></a>
+          </li>
+        {% endif %}
+        {% if project.pinterest %}
+          <li>
+            <a href="{{ project.pinterest }}" target="_blank"><img src="{{ asset('bundles/mmhsite/img/logos_RS/pinterest_vert.png') }}" class="social-icons" alt="logo pinterest" /></a>
+          </li>
+        {% endif %}
+      </ul>
+
+
+    {% endfor %}
+
+      </aside>
+    </div>
+    {% endblock %}

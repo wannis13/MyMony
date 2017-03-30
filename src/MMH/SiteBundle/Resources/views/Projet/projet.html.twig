@@ -1,0 +1,21 @@
+{% extends 'MMHSiteBundle::projetlayout.html.twig' %}
+
+{% block title %}{% for project in project %}{{project.title}}{% endfor %}{% endblock %}
+
+{% block metadescription %}{% for project in project %}{{project.headline}}{% endfor %}{% endblock %}
+
+{% block section %}
+
+<!-- more  project details with image -->
+<div class="wrap">
+  <section class="first-wrap">
+    {% for project in project %}
+    <h3>{{project.title}}</h3>
+    <div class="first-wrap-p">
+
+      {{project.text | raw}}
+
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

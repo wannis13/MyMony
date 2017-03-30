@@ -1,0 +1,68 @@
+{% extends '::baselayout.html.twig' %}
+
+{% block body %}
+
+  {% block header %}
+  <!-- Page main title -->
+    <section class="static-page-title flex">
+    <h1>{% block headtitle %}{% endblock %}</h1>
+    </section>
+  <!-- /Page main title -->
+  {% endblock %}
+
+  {% block section %}
+  {% endblock %}
+
+  <!-- Social icons at the bottom of article -->
+  <ul class="flex static-social-medias">
+    <li><a href="#"><img src="{{ asset('bundles/mmhsite/img/icon/facebook_vert.png') }}" alt="logo facebook"></a></li>
+    <li><a href="#"><img src="{{ asset('bundles/mmhsite/img/icon/twitter_vert.png') }}" alt="logo twitter"></a></li>
+    <li><a href="#"><img src="{{ asset('bundles/mmhsite/img/icon/linkedin_vert.png') }}" alt="logo linkedin"></a></li>
+  </ul>
+</section>
+
+  <!-- End Social icons at the bottom of article -->
+
+  <!-- Aside on the right with the articles -->
+      <aside class="static-content-aside">
+
+        <!-- Social media icons at the top of the aside -->
+        <ul class="flex static-social-medias">
+          <li><a href="#"><img src="{{ asset('bundles/mmhsite/img/icon/facebook_vert.png') }}" alt="logo facebook"></a></li>
+          <li><a href="#"><img src="{{ asset('bundles/mmhsite/img/icon/twitter_vert.png') }}" alt="logo twitter"></a></li>
+          <li><a href="#"><img src="{{ asset('bundles/mmhsite/img/icon/linkedin_vert.png') }}" alt="logo linkedin"></a></li>
+        </ul>
+
+        <!-- Blog articles on the left side -->
+
+        <!-- Variables to display a specifique number of articles -->
+        {% set break = true %}
+        {% set loopCount = 0 %}
+
+        {% for article in article if break %}
+          <article>
+            <a href="{{ path('mmh_static_blog', {'slug':article.slug}) }}">
+              <h3>{{article.title}}</h3>
+                {% for image in article.imagearticle %}
+                  {% if image.headimage %}
+                    <img src="{{ app.request.basePath }}{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{image.description}}">
+                  {% endif %}
+
+                  <!-- Each time the foreach turns the loopcount get +1 untill 3 -->
+                  {% set loopCount = loopCount + 1 %}
+                  {% if loopCount >= 3 %}
+                    {% set break = false %}
+                  {% endif %}
+
+                {% endfor %}
+            </a>
+          </article>
+        {% endfor %}
+
+      </aside>
+
+      <!-- Son wrapper closure -->
+    </div>
+
+
+{% endblock %}
