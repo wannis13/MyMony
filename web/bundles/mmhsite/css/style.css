@@ -1,0 +1,2265 @@
+/****************************GENERAL SETTINGS***********************************/
+
+* {
+  box-sizing: border-box;
+  font-size: 1em;
+  color: #373737;
+  font-family: 'Open Sans', sans-serif;
+}
+
+ul {
+  list-style: none;
+  margin: 0 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #373737;
+}
+
+figure {
+  margin: 0;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+figure {
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.maxwidth {
+  max-width: 100%;
+}
+
+
+/* Colors */
+
+
+/*Dark BLue*/
+
+.login-button, .button, .project-button {
+  background-color: #0a749c;
+}
+
+.menu-list a:hover, .mmh:hover, .under-menu-link a:hover, .slider-button:hover, .slider-button:hover:visited, .backup-button:hover, .join-button:hover, .project-button:hover,
+.card-home-title, .login-button:hover, footer a:hover
+{
+  color: #0a749c;
+}
+
+
+/*Blue*/
+
+/*{
+background-color: #0092c9;
+}*/
+
+
+/* Blue Grey*/
+
+.title, .carousel-info, footer aside, .static-content-aside, .static-page-title, .cards-home-section {
+  background-color: #ecf0f4;
+}
+
+
+/* Green */
+
+.language, hr, .card-home-loadbar, .progression, .conn {
+  background-color: #2da555;
+}
+
+#menuderoulant li:hover a, .popular:hover {
+  color: #2da555;
+}
+
+/* white */
+
+.logo-remplacement, .login-button, .slider-button:visited, .backup-button:visited, .join-button:visited, .project-button,
+.card-home-loadbar, .left-bar p,.ten, .twenty, .thirty
+{
+  color: #fff;
+}
+
+.menu-list, .under-menu-link, .main-navbar, .slider-button:hover, .backup-button:hover, .join-button:hover, .project-button:hover,
+.wrapper-nav, .cards-home-navbar, hr, .home-cards, .login-button:hover
+{
+  background-color: #fff;
+}
+
+/* /Colors */
+
+
+/* Layout */
+
+.flex {
+  display: flex;
+}
+
+.wrapper {
+  margin: 0 2%;
+}
+
+
+/* /Layout */
+
+
+/*fonts*/
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ubuntu Condensed';
+}
+
+footer h4, footer li, .title-list, .static-headline span, .static-headline a {
+  font-family: 'Noticia Text', serif;
+}
+
+p, .login-button {
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+/*fonts*/
+
+
+/* Place holders*/
+
+::-webkit-input-placeholder {
+  font-size: .7em;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: .7em;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: .7em;
+}
+
+:-ms-input-placeholder {
+  font-size: .7em;
+}
+
+
+/* /Place holders*/
+
+
+/*Form for contact and project submit*/
+
+.formcontact input, .formcontact textarea {
+  width: 300px;
+}
+/*************************** /GENERAL SETTINGS *********************************/
+
+
+/******************************** HEADER  **************************************/
+
+
+/* TEMPORAIRE */
+.logo-remplacement{
+  margin-right: auto;
+  margin-left: 1em;
+}
+.logo-remplacement img {
+  width: 100px;
+  height: 63px;
+}
+
+
+/* Header above the main-navbar */
+
+.top-header-flex {
+  display: flex;
+  height: 80px;
+  align-items: center;
+}
+
+
+/* DIV SOCIAUX + LOGIN */
+
+.top-header-buttons {
+  display: flex;
+  min-width: 150px;
+  height: 100%;
+  margin-top: 1em;
+  flex-direction: column;
+}
+
+
+/* Div all socials */
+
+.buttons-social {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 0.5em;
+}
+
+
+/* Login */
+
+.login-button {
+  margin: 5px 1em;
+  border: 0;
+  font-size: 10px;
+  line-height: 20px;
+  border-radius: 3px;
+  font-weight: bold;
+  border: 2px solid #0a749c;
+}
+
+
+/* Buttons social alone */
+
+.header-logo-social {
+  width: 25px;
+  height: 25px;
+  margin: 0 3px;
+}
+
+
+/* Menu */
+
+
+/* Mobile Menu Icon */
+
+.menu-mobile-icon {
+  width: 30px;
+  height: 25px;
+  margin: 15px;
+}
+
+
+/* Menu List */
+
+.triangle {
+  display: none;
+}
+
+.menu-list {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.visible-navbar {
+  border-bottom: 2px solid #0092c9;
+}
+
+
+/* Menu list item */
+
+.menu-list li, .under-menu-link {
+  width: 100%;
+  font-size: 20px;
+  line-height: 50px;
+  padding: 0 20px;
+}
+
+.mmh, .under-menu-link {
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.menu-list li {
+  border-bottom: 2px solid #0092c9;
+}
+
+.menu-image {
+  margin-right: 0.5em;
+}
+
+/* under menu link */
+
+.under-menu {
+  padding: 0 !important;
+}
+
+.under-menu-link {
+  display: none;
+}
+
+.under-menu a {
+  padding-left: 25px;
+  display: block;
+  width: 100%;
+}
+
+.menu-list a {
+  text-decoration: none;
+}
+
+.test {
+  width: 100%;
+  background: red;
+  height: 300vh;
+}
+
+.main-navbar {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+
+}
+
+.fixed {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 15;
+}
+
+.language, .conn {
+  margin-left: auto;
+  border: 2px solid #2da555;
+  box-shadow:  0 5px 5px rgba(0, 0, 0, 0.30);
+  color: #fff !important;
+  font-weight: bold;
+  padding-left: .8em;
+  padding-right: .8em;
+}
+
+
+.conn{
+  margin-right: .5em;
+  margin-bottom: .5em;
+  height: 30px;
+  line-height: 25px !important;
+  font-size: .7em;
+  border-radius: 5px;
+}
+
+
+/******************************* /HEADER  **************************************/
+
+
+/******************************** SLIDER  **************************************/
+
+
+/* Layout */
+
+.slider-wrapper, .carousel-info-wrapper, .stat {
+  flex-direction: column;
+}
+
+.carousel {
+  position: relative;
+}
+
+
+/* Circles */
+
+.carousel-circles {
+  cursor: pointer;
+  position: absolute;
+  bottom: 5px;
+  left: calc(50% - 46.5px);
+}
+
+.carousel-circles div {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #bdbdbd;
+  margin: 0 .5em;
+  box-shadow: 0 3px 3px #383838;
+  transition: box-shadow 200ms;
+}
+
+.carousel-circles div:hover {
+  box-shadow: 0 0 15px #252525;
+}
+
+.circle1 {
+  background-color: #bdbdbd;
+}
+
+
+/* Arrows*/
+
+.arrows {
+  max-width: 20px;
+  max-height: 20px;
+}
+
+.arrow-left, .arrow-right {
+  position: absolute;
+  top: calc(50% - 10px);
+  cursor: pointer;
+  /* Transitions */
+  transition: padding 500ms;
+}
+
+.arrow-left {
+  left: 5px;
+}
+
+.arrow-right {
+  right: 5px;
+}
+
+.arrow-left:hover {
+  padding-left: 4px;
+}
+
+.arrow-right:hover {
+  padding-right: 4px;
+}
+
+.carousel-info-wrapper {
+  margin: 0 2.5%;
+  align-items: center;
+}
+
+.slide {
+  display: none;
+}
+
+.slide-text {
+  margin: 0 3% 1em;
+  height: 80px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.slide-stats {
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+
+/* /Layout */
+
+
+/* Slider Typo */
+
+.slider h2, .stat, .slider-button, .contribute {
+  text-align: center;
+}
+
+.slider h2 {
+  /* Slide Title */
+  margin: 1.5em auto 0;
+  font-size: 1em;
+  min-height: 50px;
+}
+
+.slide-stats span {
+  /* Stat Numbers */
+  font-weight: bold;
+  font-size: .8em;
+}
+
+.slide-stats p {
+  /* Stat text */
+  font-size: .65em;
+  margin-top: .18em;
+}
+
+
+/*Slider pictures*/
+
+.slide-picture {
+  display: none;
+  max-width: 100%;
+  max-height: 100% !important;
+}
+
+.active {
+  display: block;
+}
+
+
+/* /Slider pictures*/
+
+
+/* Button Contribute(contains also the bakcup and join button from static pages) */
+
+.contribute {
+  margin: 1.8em auto;
+}
+
+
+.slider-button, .backup-button, .join-button, .project-button {
+  border: 2px solid #0a749c;
+  border-radius: 5px;
+  padding: 9px 60px;
+  margin: .8em 0;
+  color: #fff;
+  font-size: .9em;
+  font-weight: bold;
+  box-shadow:  0 5px 5px rgba(0, 0, 0, 0.30);
+  /* Transition */
+  transition-property: color, background-color, box-shadow;
+  transition-duration: 800ms;
+  transition-timing-function: linear;
+  transition-delay: 100ms;
+  /* For Safari */
+  -webkit-transition-property: color, background-color, box-shadow;
+  -webkit-transition-duration: 800ms;
+  -webkit-transition-timing-function: linear;
+  -webkit-transition-delay: 100ms;
+  /* font-family: 'Noticia Text'; */
+}
+
+.slider-button:hover, .backup-button:hover, .join-button:hover, .project-button:hover {
+  box-shadow: none;
+}
+
+
+/* /Button Contribute */
+
+
+/* Social Icons */
+
+.social-network-icons {
+  justify-content: space-between;
+}
+
+.social-icons {
+  max-height: 20px;
+  max-width: 20px;
+  margin: .8em .5em;
+}
+
+
+/* /Social Icons */
+
+/******************************* /SLIDER  **************************************/
+
+/******************************* Sub Menu with category ************************************/
+
+#menuderoulant ul{
+  position: absolute;
+  top: 22px;
+  background-color: white;
+  width: 160px;
+  border: solid 3px #2da555;
+  display: none;
+}
+
+#menuderoulant {
+  position: relative;
+}
+
+#menuderoulant li{
+  margin-top: 7px;
+  padding-bottom: 7px;
+  border-bottom: solid 2px #2da555;
+  text-align: center;
+  font-size: 0.5em;
+}
+
+#menuderoulant li a {
+  font-size: 12px;
+}
+
+#menuderoulant li:last-child{
+  border-bottom: 0px;
+}
+
+/******************************* /Sub Menu with category ************************************/
+
+/******************************** FOOTER  **************************************/
+
+
+/*Ensure the footer to be always at the bottom*/
+
+footer, footer aside {
+  width: 100%;
+}
+
+footer {
+  margin-top: 50px;
+}
+
+footer aside {
+  margin-top: 1em;
+  padding-bottom: 3px;
+}
+
+footer h4 {
+  font-size: 1em;
+}
+
+footer h4, footer p {
+  text-align: center;
+}
+
+footer ul, footer p {
+  font-size: 0.6em;
+  padding-top: 1em;
+}
+
+footer ul {
+  max-width: 40%;
+  margin-right: 2em;
+}
+
+footer li {
+  padding-left: 2px;
+}
+
+
+/*Special class for the menu title*/
+
+.title-list {
+  font-weight: bold;
+  padding-bottom: 0.5em;
+  padding-left: 0;
+}
+
+
+/*Iniline display for the images(logos/social medias)*/
+
+footer figure {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-left: 2em;
+}
+
+
+/*Reduce the links around the images and the partners logos for better display*/
+
+footer section a, footer section figure img {
+  width: 100px;
+}
+
+footer section a {
+  margin: .5em .5em;
+}
+
+footer aside a {
+  width: 50px;
+  margin: .5em 0;
+}
+
+
+/*Controle the size of social media icons*/
+
+footer aside figure img {
+  width: 40%;
+}
+
+
+/*No twitter on smartphones*/
+
+.twitter-container {
+  display: none;
+}
+
+
+/******************************* /FOOTER  **************************************/
+
+
+/******************************* HOMEPAGE **************************************/
+
+
+/******************************** CARDS  **************************************/
+
+
+/****** CARDS ******/
+
+
+/* general */
+
+.wrapper-home-cards {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Navbar */
+
+
+.cards-home-navbar {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0 10px;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.cards-home-navbar a {
+  font-size: 15px;
+  margin: 0 10px;
+  width: fit-content;
+}
+
+form {
+  width: 100%;
+  justify-content: center;
+}
+
+.searchbar-cards-home {
+  width: 250px;
+  height: 28px;
+  line-height: 25px;
+  font-size: 18px;
+  margin: 15px 15px;
+}
+
+hr {
+  display: block;
+  max-width: 1160px;
+  margin: 0 auto;
+  border-top: 3px solid #2da555;
+  padding: 20px 0 50px;
+}
+
+.card-nav-form-d {
+  display: none;
+}
+
+
+/* Cards */
+
+.home-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  height: 395px;
+  border: solid 1px #bdbdbd;
+  margin: 10px 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  /* box-shadow: 5px 5px 0 #bdbdbd ; */
+}
+
+.home-cards:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.cards-home-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-home-title {
+  text-align: center;
+  font-size: 18px;
+  height: 51px;
+}
+
+.img-remplacement {
+  width: 100%;
+  height: 150px;
+  background-color: grey;
+}
+
+.cards-image {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.finish-banner {
+  color: #2da555;
+  font-size: 20px;
+  text-align: center;
+  margin-top: .7em;
+}
+
+.home-card-description {
+  width: 90%;
+  margin: 0 auto;
+  min-height: 44.8px;
+}
+
+.home-card-stats {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: .7em;
+}
+
+.progressBar {
+  height: 20px;
+  width: 200px;
+  background-color: lightgrey;
+  position: relative;
+}
+
+.progression {
+  height: 20px;
+  position:absolute;
+  top:0;
+  width: 0;
+  max-width: 100%;
+  transition-property: width;
+  transition-duration: 300ms;
+  transition-timing-function: linear;
+  transition-delay: 100ms;
+}
+
+.value {
+  color: #fff;
+  margin-left: 90px;
+}
+
+.card-home-amount {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 1px;
+}
+
+.amount, .contribut {
+  margin: 0px 8px ;
+  font-size: .9em;
+}
+
+.amount {
+  color: black;
+}
+
+
+/********** /CARDS  ********/
+
+
+/*                              END HOMEPAGE                                   */
+
+
+/******************************* PROJECTS **************************************/
+
+
+/*product image and leftbar with social netwokr icons*/
+
+p {
+  font-family: "Open Sans", sans-serif;
+}
+
+.container figure img {
+  width: 100%;
+}
+
+.container {
+  background-color: #ECF0F4;
+}
+
+.header-text {
+  border-bottom: 10px solid #CDCDCD;
+  border-top: 10px solid #CDCDCD;
+  background-color: #ECEFF4;
+}
+
+
+/*===========product image and leftbar with social netwokr icons======*/
+
+
+/*====================headline inside the leftbar============*/
+
+.header-text h1 {
+  font-size:1.2em;
+  text-align: center;
+  font-family: "Ubuntu Condensed";
+}
+
+.header-text p {
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  line-height: 22px;
+  margin: 5%;
+}
+
+
+/*===================headline inside the leftbar============*/
+
+
+/*===========three paragraphs inside the leftbar=============*/
+
+.row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.row h2 {
+  font-size: 13px;
+  margin: 0 10%;
+  line-height: 1.7em;
+}
+
+
+/*===========/three paragraphs inside the leftbar=============*/
+
+
+/*==============leftbar at the center of the page===============*/
+
+.left-bar {
+  width: 50%;
+}
+
+.left-bar p {
+  font-size: 14px;
+  font-family: 'Noticia Text', serif;
+  font-weight: bold;
+  background-color: #0A749C;
+  text-align: center;
+}
+
+
+/*==============/leftbar at the center of the page===============*/
+
+
+/*=================social network icons============*/
+
+.social-networks {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  /*margin-left: 30%;*/
+}
+
+.social-icons {
+  max-width: 20px;
+  max-height: 20px;
+}
+
+
+/*=================/social network icons============*/
+
+
+/*  ==========================project button================*/
+
+.project-button {
+  /*margin: 0 auto;*/
+}
+
+
+/*  ==========================/project button================*/
+
+
+/*===========image with the text at the middle of the page==========*/
+
+.first-wrap {
+
+}
+
+.second-wrap {
+  margin: 5%;
+}
+
+.box img {
+  float: right;
+  margin: 0 10px 10px 0;
+  max-width: 60%;
+}
+
+
+/*===========/image with the text at the middle of the page==========*/
+
+
+/*=========================proposer info and image============*/
+
+.proposer {
+  background-color: #ECEFF4;
+  padding: 2%;
+}
+
+.proposer figure img {
+  /*float: left;*/
+  margin: 0 10px 10px 0;
+  max-width: 60%;
+  border-radius: 50%;
+  ;
+}
+
+
+/*=========================/proposer info and image============*/
+
+
+/*=================================contributors=========================*/
+
+.contributors {
+  margin-top: 10%;
+  width:100%;
+}
+.contributors img {
+  width: 20px;
+  height: 20px;
+  margin-left: 3%;
+}
+.span span{
+  display: inline-block;
+  margin-right: 5%;
+  box-shadow: 4px 8px 5px rgba(0, 0, 0, 0.25);
+  background-color: green;
+  color: white;
+  text-align: center;
+}
+.ten span {
+  width: 70%;
+}
+
+.twenty span {
+  width: 70%;
+
+}
+.thirty span {
+  width: 70%;
+
+}
+
+
+
+/*================================/contributors========================*/
+
+
+/*                              END PROJECTS                                   */
+
+
+/******************************* PAIEMENT **************************************/
+
+/********************Titre paiement page************************/
+.paiement-title{
+  height: 70px;
+  width: 100%;
+  text-align: center;
+  background-color: #ecf0f4;
+  margin-top: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-title-paiement{
+  margin-top: 0;
+  font-size: 15px;
+  color: #2da555;
+}
+
+/**************************Section detail/moyen paiement**********************/
+.wrapper-paiement{
+  width: 90%;
+  margin: auto;
+}
+
+/******************************* HOMEPAGE **************************************/
+
+.checkbox{
+
+  margin: 0 1.5% 20px;
+}
+
+
+.title-checkbox{
+  font-size: 15px;
+}
+
+.euro{                         /********Checkbox €*********/
+  /*margin-left: 5px;
+  margin-bottom: 15px;*/
+  margin: 0 15px 15px 5px;
+}
+
+.container-paiement{         /*******Detail du paiement et du projet *********/
+
+  height: 100px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.paiement-validation{
+  background-color: #2da555;
+  color: white;
+  text-align: center;
+}
+
+.text-project{
+  text-align: center;
+  font-weight: bold;
+
+}
+
+.text-project3{
+  text-align: center;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+.jardin{                 /*************Photo projet************/
+  height: 190px;
+  width: 260px;
+  margin: auto;
+  display: block;
+}
+
+.moyen-paiement{         /***** Moyen du paiement ***/
+  font-size: 15px;
+  padding-top: 20px;
+}
+/****************formulaire**********************/
+
+.form-style{
+  max-width: 500px;
+  border-color: #f4f7f8;
+  border-radius: 8px;
+  font-size: 17px;
+  color: black;
+  flex-direction: column;
+}
+
+
+.form-style input {
+  max-width: 250px;
+}
+
+.form-color{
+  background: #f4f7f8;
+}
+
+/************************contribute button************************/
+
+.contribute-button {
+  margin: auto;
+  margin-bottom: 20px;
+  display: block;
+  border: 2px solid #0a749c;
+  border-radius: 5px;
+  padding: 10px 60px;
+  width: 250px;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Noticia Text Bold', arial;
+  font-size: .9em;
+  font-weight: bold;
+  box-shadow: 3px 4px 0 #bdbdbd;
+  text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.2);
+  box-shadow: 0 0 5px #0a749c,
+  0 -1px 0 #0a749c;
+  background-color: #0a749c;
+}
+.contribute-button:hover{
+  color: #0a749c;
+  background: #fff;
+
+}
+
+.contribute-button:active{
+  color: #fff;
+  background: #0a749c;
+  box-shadow: 1px 1px 10px black inset,
+  0 1px 0 rgba( 255, 255, 255, 0.4);
+}
+/*                              END PAIEMENT                                   */
+
+/******************************************************************************/
+
+
+/********* STATIC PAGE CONTENT (ASSOCIATION, LEGAL INFORMATIONS...)************/
+
+.static-page-title, .static-social-medias {
+  justify-content: center;
+}
+
+.static-page-title, .static-headline {
+  text-align: center;
+}
+
+
+/*Display of the top band right below the header*/
+
+.static-page-title {
+  width: 100%;
+  padding: .5em 0;
+}
+
+
+/*Main title*/
+
+.static-page-title h1 {
+  margin: 0;
+}
+
+
+/*General wrapper for the static content and images size*/
+
+.wrapper-static-content, .static-image {
+  width: 95%;
+  margin: auto;
+}
+
+
+/*Titles of the left section with text*/
+
+.static-content-section h2 {
+  font-size: 1.1em;
+}
+
+
+/*Paragraphe of the left section*/
+
+.static-content-section p {
+  font-size: .9em;
+}
+
+.static-content-section ol {
+  padding-left: 20px;
+}
+
+.static-content-section figure {
+  margin: 2em 0;
+}
+
+.static-image {
+  display: block;
+}
+
+.static-headline {
+  margin: 2em auto;
+  border: 2px solid black;
+  width: 40%;
+}
+
+.static-don {
+  font-style: italic;
+}
+
+
+/*Display of the social media icons*/
+
+.static-social-medias {
+  margin-bottom: 1em;
+}
+
+.static-social-medias li img {
+  width: 20px;
+  margin: 0 0.5em;
+}
+
+
+/*Special top margin for the social media icons in the section*/
+
+section .static-social-medias {
+  margin-top: 2em;
+}
+
+
+/*No aside with articles on smartphones*/
+
+.static-content-aside {
+  display: none;
+}
+
+
+/*Blog content*/
+
+#blog-title {
+  font-size: 1.5em;
+}
+
+.blog-image {
+  max-width: 500px;
+  max-height: 400px;
+}
+
+
+.flashmessage, .errormessage {
+  background-color: #ecf0f4;
+  border-radius: 5px;
+  position: absolute;
+  top: 15%;
+  z-index: 1000;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 2%;
+}
+
+.flashmessage {
+  border: 1px solid #2da555;
+}
+
+.errormessage {
+  border: 1px solid red;
+}
+
+/*Special div for the cooments on the project page*/
+.comment {
+  padding: 0.5em;
+  background-color: white;
+  border-radius: 5px;
+  font-size: .9em;
+}
+
+.comment span {
+  font-style: italic;
+}
+
+
+/*                        END STATIC PAGE CONTENT                             */
+
+
+/******************************************************************************/
+
+
+/*                               RESPONSIVE                                   */
+
+
+/******************************************************************************/
+
+
+/* #####################   SMARTPHONE & SMALL TABLETS   ##################### */
+
+@media screen and (min-width: 360px) {
+
+  .flashmessage, .errormessage {
+    height: 100px;
+    width: 200px;
+  }
+
+  footer section a {
+    margin: .5em .7em;
+  }
+  /*Center the images on bigger smartphones*/
+  footer figure {
+    padding-left: 3em;
+    align-items: center;
+  }
+  /*Controle the size of partnairs logos*/
+  footer section figure img {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 380px) and (max-width: 550px) {
+  footer section a {
+    margin: .5em 1.5em;
+  }
+}
+
+@media screen and (min-width: 450px) {
+  footer aside figure {
+    justify-content: flex-end;
+  }
+}
+
+
+/* END SMARTPHONE & SMALL TABLETS */
+
+
+/* ###########################   TABLETS   ############################ */
+
+@media (min-width: 700px) {
+
+  /************************************ paiement page *******************************/
+
+  .wrapper-paiement{
+    margin-left: 20px;
+  }
+
+  .checkbox{                   /******choix somme paiement ******/
+    padding-left: 20px;
+  }
+
+  .resume-paiement{       /******* paiement detail ************/
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+    border-bottom: 10px solid #2da555;
+    max-width: 1000px;
+  }
+
+  .valid-paiement{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+
+  .text-title-paiement{
+    margin-top: 0;
+    font-size: 20px;
+    color: #2da555;
+  }
+  /************************************ END paiement page *******************************/
+
+  /******************************** HEADER  **************************************/
+  /* Top header */
+  .card-nav-form-m {
+    display: none;
+  }
+  .card-nav-form-d {
+    width: fit-content;
+    width: -moz-fit-content;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    margin-right: 35px;
+  }
+  .top-header-flex {
+    height: 100px;
+  }
+  .top-header-buttons {
+    min-width: 350px;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0 15px;
+  }
+  .buttons-social {
+    order: 3;
+    margin-bottom: 0;
+  }
+  .login-button {
+    order: 2;
+    height: 30px;
+    font-size: 12px;
+
+    /* Transition */
+    transition-property: color, background-color, box-shadow;
+    transition-duration: 800ms;
+    transition-timing-function: linear;
+    transition-delay: 100ms;
+    /* For Safari */
+    -webkit-transition-property: color, background-color, box-shadow;
+    -webkit-transition-duration: 800ms;
+    -webkit-transition-timing-function: linear;
+    -webkit-transition-delay: 100ms;
+  }
+  .header-logo-social {
+    width: 30px;
+    height: 30px;
+    margin: 0 8px;
+  }
+  /* Navbar */
+  .cards-home-navbar {
+    justify-content: flex-start;
+    padding-left: 50px;
+  }
+  .visible-navbar {
+    /*Hide bar with menu icon*/
+    display: none;
+  }
+  .acceuil {
+    display: block;
+    position: relative;
+  }
+  .menu-list {
+    /*Make the nav item in line*/
+    display: flex;
+    justify-content: left;
+  }
+  .menu-list li {
+    font-size: 16px;
+    width: fit-content;
+    width: -moz-fit-content;
+  }
+  /* Under menu */
+  .under-menu/*Make the mhh dropdown menu in column*/
+  {
+    height: 150px;
+    position: relative;
+  }
+  .under-menu-link {
+    display: none;
+  }
+  .under-menu:hover .under-menu-link {
+    width: 200px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    position: absolute;
+    top: 50px;
+    left: 15px;
+    padding: 0;
+    border: 3px solid #0092c9;
+    z-index: 16;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+  .under-menu-link a:last-child {
+    border-bottom: 0;
+  }
+  .under-menu-link a {
+    display: block;
+    border-bottom: 3px solid #0092c9;
+    padding: 0 10px;
+  }
+  .title {
+    /*Set the background color back to white*/
+    background-color: white;
+    height: 50px;
+  }
+  .top-header-buttons {
+    /* Make the top header login and social buttons inline*/
+    flex-direction: row;
+    width: 200px;
+  }
+  .menu-list li/*get rid of the border bottom of all list element and assign it to .title*/
+  {
+    border-bottom: 0;
+  }
+  .main-navbar {
+    border-bottom: 3px solid #0092c9;
+  }
+  .triangle {
+    /*triangle that point the page*/
+    display: block;
+    width: 15px;
+    position: absolute;
+    top: 138px;
+    z-index: 1000;
+  }
+  .language {
+    color: white;
+    /*margin-left: auto;*/
+    margin-right: 15px;
+    width: fit-content;
+    height: 30px;
+    align-self: center;
+    line-height: 30px !important;
+    padding: 0 10px!important;
+  }
+  .sign{
+    margin-left: auto;
+    background-color:#2da555;
+    color: white;
+    height: 38px;
+    align-self: center;
+    line-height: 40px !important;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+  .conn{
+    height: 35px;
+    line-height: 30px !important;
+    font-size: .7em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  .fixed .conn {
+    margin-top: .4%;
+  }
+  .connection form {
+    margin-top:  2%;
+  }
+  .both{
+    display: flex;
+    justify-content: space-around;
+  }
+  .inscription{
+    margin-top:  2%;
+    margin-right: 10%;
+  }
+  .btn-register{
+    margin: 3% 20%;
+    color: white;
+    border-radius: 3px;
+    height: 30px;
+    padding: 0 10%;
+    font-size: 12px;
+    font-weight: bold;
+    border: 2px solid #0a749c;
+    background-color: #0a749c;
+  }
+  /******************************** /HEADER  **************************************/
+  /******************************** CARDS  **************************************/
+  .wrapper-home-cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  /******************************** /CARDS  **************************************/
+}
+
+
+/*                    Tablets and small Desktop : 768 px                       */
+
+@media screen and (min-width: 768px) {
+
+  /*Contact and submission message*/
+  .flashmessage, .errormessage {
+    height: 100px;
+    width: 300px;
+    left: 25%;
+  }
+
+/*Display the border radius on the button to choose the language*/
+  .language {
+    border-radius: 5px;
+  }
+
+  /********************************* Slider ***********************************/
+  /*Layout*/
+  .slider {
+    background: linear-gradient(#ecf0f4, #ecf0f4 92%, #fff 92%);
+    background-color: #ecf0f4;
+  }
+  .slider-wrapper {
+    flex-direction: row;
+  }
+  .carousel {
+    max-width: 60%;
+    margin: 1em 1.6%;
+  }
+  .carousel-circles {
+    bottom: 20%;
+    left: 40%;
+  }
+  .carousel-info {
+    max-width: 35%;
+    margin-top: 2em;
+    background-color: #fff;
+  }
+  /* Shadow */
+  .slide-picture, .carousel-info {
+    /* box-shadow: 6px 5px 0 #bdbdbd; */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+  /* Shadow */
+  /******************************* /Slider ************************************/
+
+  /******************************* Sub Menu with category ************************************/
+
+  #menuderoulant ul{
+    width: 200px;
+  }
+
+  #menuderoulant li a {
+    font-size: 15px;
+  }
+  .menu-list a {
+    font-size: 16px;
+  }
+  /******************************* /Sub Menu with category ************************************/
+
+  /********************************* Footer ***********************************/
+  footer section a, footer aside a {
+    margin: .5em 0;
+  }
+  /* reduce the links around the partners for better display */
+  footer section a {
+    width: 80px;
+  }
+  /* reduce the links around the social media icons for better display */
+  footer aside a {
+    width: 50px;
+  }
+  /*display of both partners and social icons img*/
+  footer figure {
+    justify-content: space-around;
+    padding-left: 0;
+  }
+  /*Display of the div containing the submenu and the twitter widget*/
+  footer aside div:nth-child(1) {
+    justify-content: space-between;
+  }
+  footer h4 {
+    font-size: 1.2em;
+  }
+  footer ul, footer p {
+    font-size: .7em;
+  }
+  /*Controle the size of partnairs logos*/
+  footer section figure img {
+    width: 100%;
+  }
+  /*Controle the size of social media icons*/
+  footer aside figure img {
+    width: 50%;
+  }
+  .twitter-container {
+    display: block;
+    width: 300px;
+    height: 200px;
+    margin: 1em 0;
+    overflow: scroll;
+  }
+  .twitter-timeline {
+    overflow: scroll;
+  }
+  /******************************* /Footer ************************************/
+  /********* STATIC PAGE CONTENT (ASSOCIATION, LEGAL INFORMATIONS...)************/
+  .static-page-title {
+    padding: 1em 0;
+    margin-bottom: 2em;
+  }
+  .static-content-section {
+    width: 70%;
+    margin-right: 2em;
+  }
+  /*Make sure that the first h2 is aligned with the aside div*/
+  .static-content-section h2:nth-child(1) {
+    margin-top: 0;
+  }
+  /*Allow the aside on tablets*/
+  .static-content-aside {
+    display: block;
+    height: 100%;
+    width: 30%;
+    padding: 1em;
+  }
+  /*Display of the articles on the left*/
+  .static-content-aside article, .static-content-aside article img {
+    width: 100%;
+  }
+  .static-content-aside article {
+    text-align: center;
+    margin-bottom: 2em;
+    padding-top: 0.3em;
+    background-color: white;
+  }
+  .static-content-aside h3 {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+  /*Shadow on the aside div and the article div*/
+  .static-content-aside, .static-content-aside article {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+  /********* /STATIC PAGE CONTENT (ASSOCIATION, LEGAL INFORMATIONS...)************/
+
+  /*Contact and submit form*/
+
+  .formcontact input, .formcontact textarea {
+    width: 400px;
+  }
+
+  /********* Projet************/
+  /*===========product image and leftbar with social netwokr icons======*/
+  .container {
+    display: flex;
+  }
+  .container figure img {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    margin: 1em;
+    /*align-self: center;*/
+    width: 90%;
+  }
+  .header-text {
+    max-width: 35%;
+    height: auto;
+    margin: 2em 2em 0 -1em;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    background-color: #fff;
+    border-bottom: 0;
+    border-top: 0;
+  }
+  .header-text h1{
+    font-size: 1em;
+    text-align: center;
+    margin-bottom: 10%;
+  }
+  .header-text p {
+    font-size: .85em;
+  }
+  .left-bar {
+    margin-right: -6%;
+  }
+  /*===========product image and leftbar with social netwokr icons======*/
+  /*=============socdial networks icon=============*/
+  .social-networks {
+    justify-content: center;
+    align-items: center;
+  }
+  .social-icons {
+    max-width: 25px;
+    max-height: 25px;
+    /*margin: 20%;*/
+  }
+  /*/==============social networks icon=========*/
+  /*===========image with the text at the middle of the page==========*/
+  .img-left img {
+    float: left;
+    margin-right: 5%;
+  }
+  .wrap {
+    display: flex;
+    margin: 5% auto;
+  }
+  .first-wrap, .second-wrap {
+    display: unset;
+    width: 55%;
+    margin: 0 3%;
+  }
+  .first-wrap-p img {
+    float: right;
+  }
+  .first-wrap h3 {
+    border-bottom: 2px solid #2DA555;
+    width: fit-content;
+    width: -moz-fit-content;
+  }
+  .second-wrap h3 {
+    border-bottom: 2px solid #2DA555;
+    width: fit-content;
+    width: -moz-fit-content;
+  }
+  /*===========/image with the text at the middle of the page==========*/
+  /*=============project proposer================ */
+  .proposer {
+    width: 30%;
+    margin: 5% auto;
+    padding: 1%;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  .proposer-info h1 {
+    font-size: 1em;
+  }
+  /*=============/project proposer================ */
+  /*=================================contributors=========================*/
+
+  /********* /Projet************/
+}
+
+
+/*                      /Tablets and small Desktop : 768 px                   */
+
+
+/* Slider Responsive Design for higher Res */
+
+@media screen and (min-width: 861px) {
+  .slider-wrapper {
+    margin: 0 2%;
+    justify-content: space-around;
+  }
+  .carousel {
+    margin: 1em 0 4em 0;
+  }
+  .carousel-circles {
+    bottom: 2%;
+  }
+  .carousel-info-wrapper {
+    margin: 0 4%;
+  }
+  .carousel-info {
+    max-width: 302px;
+  }
+  .slide-text {
+    height: 105px;
+  }
+}
+
+@media screen and (min-width: 980px) {
+  /*Logo size*/
+
+  .logo-remplacement img {
+    width: 140px;
+    height: 90px;
+  }
+
+  .wrapper, .wrapper-static-content {
+    width: 90%;
+    margin: auto;
+  }
+  footer h4 {
+    font-size: 1.4em;
+  }
+  .twitter-container {
+    width: 400px;
+  }
+  /*page projet*/
+  .menu-list li {
+    font-size: 16px;
+  }
+  .header-text h1 {
+    text-align: center;
+    margin-bottom: 10%;
+  }
+  .left-bar{
+    margin-right: -9%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .slide-stats {
+    margin-top: 4em;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .home-cards {
+    margin: 35px;
+  }
+
+  .carousel-info-wrapper {
+    margin: 0 5%;
+  }
+  .carousel-info {
+    max-height: 408px;
+    max-width: 325px;
+  }
+  .slide-text {
+    height: 150px;
+  }
+  .contribute {
+    margin-top: 2em;
+  }
+  .slide-stats {
+    margin-top: 3em;
+  }
+  .social-network-icons {
+    margin-top: .6em;
+  }
+}
+
+@media screen and (min-width: 1155px) {
+  .slider-wrapper {
+    margin: 0 5%;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .slider h2 {
+    margin-top: 2.25em;
+  }
+
+  /*Project*/
+
+  .container {
+    padding-top: 1.5em;
+  }
+
+  .project-image-container {
+    margin: 0 8% 0;
+  }
+  .header-text {
+    width: 20%;
+
+  }
+  .header-text h1 {
+    margin: 18% 0;
+    text-align: center;
+
+  }
+  .row {
+    margin-bottom: 8%;
+  }
+  .header-text p {
+    margin-bottom: 8%;
+    font-size: 1em;
+  }
+  .left-bar {
+    margin-right: -6%;
+  }
+  .left-bar p {
+    font-size: .9em;
+  }
+  .row img {
+    display: unset;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+  }
+  .proposer {
+    width: 22%;
+    margin-right: 2%;
+  }
+  .container figure img {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    margin: 1em;
+    /*align-self: center;*/
+    width: 100%;
+  }
+  /*/Project*/
+}
+
+@media screen and (min-width: 1280px) {
+
+  /*Contact and submission message*/
+  .flashmessage, .errormessage {
+    width: 400px;
+    left: 30%;
+  }
+
+  /* Set the final size */
+  .slider-wrapper {
+    width: 1152px;
+    margin: 0 auto;
+  }
+
+  .slide-text {
+    margin-bottom: 2em;
+  }
+
+  /* --------------------------Footer------------------------- */
+  footer ul {
+    width: 15%;
+    font-size: 0.8em
+  }
+  footer p {
+    font-size: 0.9em;
+  }
+  /*Controle the size of partnairs logos*/
+  footer section figure img {
+    width: 150%;
+  }
+  /*Controle the size of social media icons*/
+  footer aside figure img {
+    width: 60%;
+  }
+  /* -------------------------/Footer------------------------- */
+
+  /* -------------------------Paiement------------------------- */
+
+  .wrapper-paiement{
+    width: 90%;
+    margin-left: auto;
+  }
+
+  .jardin{                /******************Photo projet *******************/
+    height: 160px;
+    width: 220px;
+    margin: auto;
+    float: left;
+    margin-bottom: 10px;
+  }
+
+  .text-title-paiement{
+    margin-top: 0;
+    font-size: 25px;
+    color: #2da555;
+  }
+
+  .resume-paiement{
+    width: 100%;
+  }
+
+  .valid-paiement{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+
+  .contribute {             /******* contribute button *************/
+    margin: auto;
+    margin-bottom: 20px;
+  }
+
+  /* -------------------------/Paiement------------------------- */
+
+  /* -------Static page content (association, legal informations)--------- */
+  /*Bigger social media icons on big tablets and desktop*/
+  .static-content-aside {
+    padding: 1em 2em;
+  }
+  .static-social-medias li img {
+    width: 25px;
+    margin: 0 1em;
+  }
+  .static-image {
+    width: 90%;
+  }
+  .static-headline span, .static-headline a {
+    font-size: 1.1em;
+  }
+  /* ------/Static page content (association, legal informations)--------- */
+  /* ------ Project --------*/
+  .row img {
+    display: unset;
+  }
+
+  .wrap {
+    width: 95%;
+    margin: 5%;
+  }
+  /* ------ /Project --------*/
+
+  /* Set the final size */
+  .slider-wrapper {
+    width: 1152px;
+    margin: 1.5em auto 0;
+  }
+  /* --------------------------Footer------------------------- */
+  footer ul {
+    width: 15%;
+    font-size: 0.8em
+  }
+  footer p {
+    font-size: 0.9em;
+  }
+  /*Controle the size of partnairs logos*/
+  footer section figure img {
+    width: 150%;
+  }
+  /*Controle the size of social media icons*/
+  footer aside figure img {
+    width: 60%;
+  }
+  /* -------------------------/Footer------------------------- */
+  /* -------Static page content (association, legal informations)--------- */
+  /*Bigger social media icons on big tablets and desktop*/
+  .static-content-aside {
+    padding: 1em 2em;
+  }
+  .static-social-medias li img {
+    width: 25px;
+    margin: 0 1em;
+  }
+  .static-image {
+    width: 90%;
+  }
+  .static-headline span, .static-headline a {
+    font-size: 1.1em;
+  }
+  /* ------/Static page content (association, legal informations)--------- */
+  /* ------ Project --------*/
+
+  .row img {
+    display: unset;
+  }
+  .proposer {
+    margin-right: 8%;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+  }
+
+  .wrap {
+    width: 95%;
+    margin-left: 5%;
+  }
+
+  /* ------ /Project --------*/
+}
+
+@media (min-width: 1322px) {
+
+  .proposer {
+    margin: 0 6%;
+    width: 20%;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+
+  /*Contact and submission message*/
+  .flashmessage, .errormessage {
+    width: 500px;
+    left: 30%;
+    padding-left: 1%;
+    padding-top: 1%;
+  }
+
+  .wrapper, .wrapper-static-content, .wrap {
+    width: 80%;
+  }
+  .first-wrap, .second-wrap {
+    margin-left: 0;
+  }
+  .twitter-container {
+    width: 500px;
+    height: 300px;
+  }
+  .carousel-info {
+    margin-top: 2.6em;
+  }
+  .static-image {
+    width: 80%;
+  }
+  /* Align nav bar margin on footer margin */
+  .menu-list {
+    margin-left: 10%;
+  }
+
+  .container {
+    padding:2% 0 0 6%;
+  }
+
+  .header-text {
+    width: 20%;
+  }
+  .wrap{
+    width:90%;
+    padding-left: 10%;
+  }
+  .first-wrap, .second-wrap {
+    width: 55%;
+    /*margin-left: 10%;*/
+  }
+
+  .static-image {
+    width: 80%;
+  }
+  /*project page*/
+  .header-text h1{
+    margin: 12% 0;
+    font-size: 1em;
+  }
+
+  .proposer{
+    width: 24%;
+  }
+  .left-bar {
+    margin-right: -8%;
+  }
+
+  .first-wrap-p img{
+    margin-left: 5%;
+  }
+  .first-wrap-p p{
+
+  }
+  .img-left img{
+    margin-right: 5%;
+  }
+}
+@media screen and (min-width: 1600px) {
+
+}
+@media screen and (min-width: 1700px) {
+  .proposer{
+
+  }
+  .left-bar {
+    margin-right: -8%;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+
+  .proposer{
+    width: 24%;
+    margin: 0 4%;
+  }
+  .left-bar {
+    margin-right: -9%;
+  }
+}
+@media screen and (min-width: 1900px) {
+
+  .proposer{
+
+    /*width: 20%;*/
+  }
+  .left-bar {
+    margin-right: -9.1%;
+  }
+  .first-wrap{
+    width: 43%;
+  }
+
+}
+
+/* /Slider Responsive Design for higher Res */
