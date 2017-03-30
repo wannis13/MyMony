@@ -1,0 +1,238 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="keywords" content="MyMoneyHelp crowdfunding financement participatif social ">
+  <meta name="description" content="{% block metadescription %}{% endblock %}">
+  <meta name="author" content="Abdifatah Ibrahim Omar, Etienne Dhennin et Thomas Gossart ">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/icon" href="{{ asset('bundles/mmhsite/img/favicon.ico') }}">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="{{ asset('bundles/mmhsite/css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ asset('bundles/mmhsite/css/main.css') }}">
+  <!-- Custom Css -->
+  <link rel="stylesheet" href="{{ asset('bundles/mmhsite/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('bundles/mmhsite/circleplugin/styles.css') }}">
+  <!-- /Custom Css -->
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Noticia+Text%7cOpen+Sans%7cUbuntu+Condensed" rel="stylesheet">
+  <!-- Google fonts -->
+  <script src="{{ asset('bundles/mmhsite/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+</head>
+
+
+<body>
+
+  <!--****************************** HEADER ***********************************-->
+
+  <header>
+    <!-- Start Of Header -->
+    <section class="top-header-flex">
+      <!--Start of Top Header:: Section Above The NavBar -->
+      <div class="logo-remplacement">
+        <a href="#">  <img src="{{ asset('bundles/mmhsite/img/logo.png') }}" alt="logo image" /></a>
+      </div>
+      <div class="top-header-buttons">
+        {% if app.user|default %}
+        <li class="sign">
+          {{ app.user.username|default('Unnamed User') }} | <a href="{{ path('fos_user_security_logout') }}" title="logout">logout</a>
+          {% else %}
+          <a class = "conn" href="{{ path('mmh_site_connexion')}}" class="{% if app.request.attributes.get('_route') == 'mmh_site_connexion' %} active {% endif %}"> S'inscrire/Se Connecter </a>
+          {% endif %}
+        </li>
+        <div class="buttons-social">
+          <a href="https://www.facebook.com/mymoneyhelp/">
+            <img src="{{ asset('bundles/mmhsite/img/icon/facebook_vert.png') }}" class="header-logo-social" alt="logo facebook">
+          </a>
+          <a href="https://twitter.com/mymoneyhelp">
+            <img src="{{ asset('bundles/mmhsite/img/icon/twitter_vert.png') }}" class="header-logo-social" alt="logo twitter">
+          </a>
+          <a href="https://www.linkedin.com/in/mymoneyhelp-crowdfunding-39a94498">
+            <img src="{{ asset('bundles/mmhsite/img/icon/linkedin_vert.png') }}" class="header-logo-social" alt="logo linkedin">
+          </a>
+        </div>
+
+        <!-- Login button -->
+      </div>
+    </section>
+    <!-- End Of Top Header -->
+    <nav class="main-navbar">
+      <img src="{{ asset('bundles/mmhsite/img/triangle_menu.png') }}" class="triangle">
+      <!-- Start of Navbar -->
+      <div class="visible-navbar">
+        <!-- Part of the navbar alway visible on mobile -->
+        <img src="{{ asset('bundles/mmhsite/img/icon/menu_bleu.png') }}" class="menu-mobile-icon">
+      </div>
+      <ul class="menu-list">
+        <!-- List of nav items -->
+        <li class="title acceuil"><a href="{{ path('mmh_site_homepage')}}" class="{% if app.request.attributes.get('_route') == 'mmh_site_homepage' or app.request.attributes.get('_route') == 'mmh_static_conditions' or app.request.attributes.get('_route') == 'mmh_static_mentions' or app.request.attributes.get('_route') == 'mmh_static_blog' or app.request.attributes.get('_route') == 'mmh_site_connexion' %}active {% endif %}">Accueil</a></li>
+        <li class="title under-menu {% if app.request.attributes.get('_route') == 'mmh_static_association' or app.request.attributes.get('_route') == 'mmh_static_soutenir' or app.request.attributes.get('_route') == 'mmh_static_contact' %} active {% endif %}">
+          <!-- List item with title + under menu -->
+          <div class="mmh">Mymoneyhelp +</div>
+          <div class="under-menu-link">
+            <a href="{{ path('mmh_static_association')}}">Qui sommes-nous ?</a>
+            <a href="{{ path('mmh_static_soutenir')}}">Nous soutenir</a>
+            <a href="{{ path('mmh_static_contact')}}">Contact</a>
+          </div>
+        </li>
+        <!-- end of mmh tab -->
+        <li class="title"><a href="{{ path('mmh_site_decouvrir')}}" class="{% if app.request.attributes.get('_route') == 'mmh_site_decouvrir' or app.request.attributes.get('_route') == 'mmh_site_projet' or app.request.attributes.get('_route') == 'mmh_site_financement' %} active {% endif %}"><img src="{{ asset('bundles/mmhsite/img/telescope.png') }}" alt="homme tenant un telescope" class="menu-image">Découvrir les projets</a></li>
+        <li class="title"><a href="{{ path('mmh_static_deposer')}}" class="{% if app.request.attributes.get('_route') == 'mmh_static_deposer' %} active {% endif %}"><img src="{{ asset('bundles/mmhsite/img/board.png') }}" alt="homme devant un tableau" class="menu-image">Déposer un projet</a></li>
+        <li class="language">EN</li>
+      </ul>
+      <!-- End of list -->
+    </nav>
+    <!-- End Of Navbar -->
+  </header>
+
+  <!--***************************** /HEADER ***********************************-->
+
+  {% block body %}{% endblock %}
+
+  <!--**************************** FOOTER ************************************-->
+
+  <!--  ~~~~~~~~~~Start of the footer~~~~~~~~~~~ -->
+
+
+  <footer>
+    <!-- Section with the partners -->
+    <section class="wrapper">
+      <h4>Merci à nos partenaires qui nous font confiance</h4>
+      <figure class="flex partners">
+        <a href="http://www.avistem.com/" target="_blank">
+          <img src="{{ asset('bundles/mmhsite/img/logos_partenaires/Avistem.jpg') }}" alt="logo avistem">
+        </a>
+        <a href="http://www.francebenevolat.org//" target="_blank">
+          <img src="{{ asset('bundles/mmhsite/img/logos_partenaires/FranceBenevolat.png') }}" alt="logo France benevolat">
+        </a>
+        <a href="http://www.comexpert.com/" target="_blank">
+          <img src="{{ asset('bundles/mmhsite/img/logos_partenaires/ComeXpert.jpg') }}" alt="logo comexpert">
+        </a>
+        <a href="http://www.initiativesetcite.com/" target="_blank">
+          <img src="{{ asset('bundles/mmhsite/img/logos_partenaires/InitiativesCites.png') }}" alt="logo initiativescites">
+        </a>
+        <a href="#">
+          <img src="{{ asset('bundles/mmhsite/img/logos_partenaires/Sivao.jpg') }}" alt="logo sivao">
+        </a>
+        <a href="http://www.payplug.com/" target="_blank">
+          <img src="{{ asset('bundles/mmhsite/img/logos_partenaires/payplug.png') }}" alt="payplug">
+        </a>
+      </figure>
+    </section>
+
+    <!-- Aside with the submenus and the social medias -->
+    <aside>
+
+      <!-- Sub menu -->
+      <div class="wrapper flex">
+        <ul>
+          <li class="title-list">MyMoneyHelp</li>
+          <li><a href="{{ path('mmh_static_association')}}">Qui sommes-nous ?</a></li>
+          <li><a href="{{ path('mmh_static_soutenir')}}">Nous soutenir</a></li>
+          <li><a href="{{ path('mmh_static_conditions')}}">Conditions générales<br> d'utilisation</a></li>
+          <li><a href="{{ path('mmh_static_mentions')}}">Mentions légales</a></li>
+          <li><a href="{{ path('mmh_static_contact')}}">Contact</a></li>
+        </ul>
+        <ul>
+          <li><a href="{{ path('mmh_site_decouvrir')}}" class="title-list">Découvrir les projets</a></li>
+        </ul>
+        <ul>
+          <li><a href="{{ path('mmh_static_deposer')}}" class="title-list">Déposer un projet</a></li>
+        </ul>
+
+        <div class="twitter-container">
+          <a class="twitter-timeline" data-lang="fr" data-width="600" data-heigth="400" data-lang="fr" data-theme="dark" href="https://twitter.com/MyMoneyHelp">Tweets by MyMoneyHelp</a>
+          <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+
+      </div>
+
+      <!-- Social medias icons -->
+      <figure class="flex wrapper">
+        <a href="https://www.facebook.com/mymoneyhelp/">
+          <img src="{{ asset('bundles/mmhsite/img/logos_RS/facebook_vert.png') }}" alt="icon facebook">
+
+        </a>
+        <a href="https://twitter.com/mymoneyhelp">
+          <img src="{{ asset('bundles/mmhsite/img/logos_RS/twitter_vert.png') }}" alt="icon twitter">
+        </a>
+        <a href="https://www.linkedin.com/in/mymoneyhelp-crowdfunding-39a94498">
+          <img src="{{ asset('bundles/mmhsite/img/logos_RS/linkedin_vert.png') }}" alt="icon linkedin">
+        </a>
+        <a href="https://plus.google.com/+MyMoneyHelpFr">
+          <img src="{{ asset('bundles/mmhsite/img/logos_RS/google-plus_vert.png') }}" alt="icon googleplus">
+        </a>
+        <a href="#">
+          <img src="{{ asset('bundles/mmhsite/img/logos_RS/pinterest_vert.png') }}" alt="icon pinterest">
+        </a>
+      </figure>
+
+      <!-- Credits -->
+      <p>MyMoneyHelp 2016 tous droits réservés. Une réalisation de
+        <a href="http://abdifatah-ibrahim.fr/" target="_blank">Abdifatah, </a>
+        <a href="http://www.etiennedh.com/" target="_blank">Etienne, </a>
+        <a href="#">Jean, </a>
+        <a href="https://www.thomas-gossart.fr" target="_blank"> Thomas et </a>
+        <a href="">Yanis </a> pour <a href="http://simplon.co/roubaix/" target="_blank">Simplon Roubaix</a>
+      </p>
+    </aside>
+
+  </footer>
+
+  <!--**************************** /FOOTER ***********************************-->
+
+  <script src="{{ asset("js/jquery-3.1.1.min.js") }}"></script>
+  <script src="{{ asset('bundles/mmhsite/js/plugins.js')}}"></script>
+  <!-- Custom Js -->
+  <script src="{{ asset('bundles/mmhsite/js/carousel.js')}}"></script>
+  <script src="{{ asset('bundles/mmhsite/js/navbar.js')}}"></script>
+  <script src="{{ asset('bundles/mmhsite/js/dropdown.js')}}"></script>
+  <script src="{{ asset('bundles/mmhsite/js/main.js')}}"></script>
+
+
+  {% if app.request.attributes.get('_route') == 'mmh_site_projet' %}
+
+  <script src="{{ asset('bundles/mmhsite/circleplugin/circle-progress.js')}}"></script>
+  {% for project in project %}
+  {% set total = 0 %}
+  {% for payment in project.payment %} {% set total = total + payment.amount %} {% endfor %}
+  {% set percent = (total / project.finalObjective) *100 %}
+  {% set percentt = percent / 100 %}
+
+  <script>
+  $('.second.circle').circleProgress({
+    value: '{{percentt | round(2, 'floor') }}'
+  }).on('circle-animation-progress', function(event, progress) {
+    $(this).find('strong').html(parseInt('{{percent | round }}' * progress) + '<i>%</i>');
+  });
+  </script>
+  {% endfor %}
+
+  {% endif %}
+
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+  <script>
+  (function(b, o, i, l, e, r) {
+    b.GoogleAnalyticsObject = l;
+    b[l] || (b[l] =
+      function() {
+        (b[l].q = b[l].q || []).push(arguments)
+      });
+      b[l].l = +new Date;
+      e = o.createElement(i);
+      r = o.getElementsByTagName(i)[0];
+      e.src = 'https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-XXXXX-X', 'auto');
+    ga('send', 'pageview');
+    </script>
+  </body>
+
+  </html>

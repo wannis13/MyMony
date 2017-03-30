@@ -1,0 +1,349 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+    app.path.project_images: bundles/mmhsite/img/projets
+    app.path.article_images: /bundles/mmhsite/img/content
+    app.path.user_images: bundles/mmhsite/img/user_images
+
+
+
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig', 'php']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        cookie_lifetime: 600 #60 seconds         
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        # save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+        save_path:   /var/lib/php5/sessions
+    fragments:       ~
+    http_method_override: true
+    assets: ~
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    form_themes:
+        - 'bootstrap_3_layout.html.twig'
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #     path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+# Stof\DoctrineExtensionsBundle configuration
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+# File and images uploading bundle
+vich_uploader:
+    db_driver: orm
+    mappings:
+        project_images:
+            uri_prefix:         %app.path.project_images%
+            upload_destination: %kernel.root_dir%/../web/bundles/mmhsite/img/projets
+        article_images:
+            uri_prefix:         %app.path.article_images%
+            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Resources/public/img/content
+        user_images:
+            uri_prefix:         %app.path.user_images%
+            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Resources/public/img/user_images
+
+# liip_imagine
+liip_imagine:
+    resolvers:
+        default:
+            web_path:
+                web_root: "%kernel.root_dir%/../web/"
+                cache_prefix: "media/cache"
+
+    filter_sets:
+        cache: ~
+
+        # the name of the "filter set"
+        my_carousel:
+
+            # adjust the image quality to 75%
+            quality: 80
+
+            # list of transformations to apply (the "filters")
+            filters:
+                upscale: { min: [700, 400] }
+                thumbnail: { size: [700, 400], mode: outbound }
+
+                background: { size: [700, 400], position: center, color: '#ECF0F4' }
+
+
+        # the name of the "filter set"
+        my_cards:
+
+            # adjust the image quality to 75%
+            quality: 60
+
+            # list of transformations to apply (the "filters")
+            filters:
+                upscale: { min: [300, 150] }
+                thumbnail: { size: [300, 150], mode: outbound }
+
+                background: { size: [300, 150], position: center, color: '#fff' }
+
+        my_text_image:
+
+            # adjust the image quality to 75%
+            quality: 70
+
+            # list of transformations to apply (the "filters")
+            filters:
+                upscale: { min: [350, 200] }
+                thumbnail: { size: [350, 200], mode: outbound }
+
+                background: { size: [350, 200], position: center, color: '#ECF0F4' }
+
+        my_avatar:
+
+            # adjust the image quality to 90%
+            quality: 90
+
+            # list of transformations to apply (the "filters")
+            filters:
+                upscale: { min: [120, 120] }
+                thumbnail: { size: [120, 120], mode: outbound }
+
+                background: { size: [120, 120], position: center, color: '#ECF0F4' }
+
+
+
+# app/config/config.yml
+easy_admin:
+   site_name: 'MyMoneyHelp'
+   entities:
+       User:
+            class: MMH\SiteBundle\Entity\User
+            label: 'Utilisateurs'
+            list:
+                title: 'Liste des utilisateurs inscrits'
+                fields:
+                    - { property: 'username', label: 'Nom'}
+                    - { property: 'familyname', label: 'Nom de famille'}
+                    - { property: 'userImage', type: 'image', base_path: %app.path.user_images%, label: 'Avatar'}
+                    - { property: 'email', type: 'email', label: 'Email'}
+                    - { property: 'enabled', label: 'Actif'}
+                    - { property: 'roles', label: 'Rôle'}
+                    - { property: 'lastLogin', label: 'Dernière Connexion'}
+
+            form:
+                fields:
+                    - { property: 'username', label: 'Nom'}
+                    - { property: 'familyname', label: 'Nom de famille'}
+                    - { property: 'email', type: 'email', label:'Email utilisateur' }
+                    - { property: 'emailCanonical', type: 'email', label:'Confirmation' }
+                    - { property: 'password', type: 'password', label: 'Mot de passe', help: 'Le mot de passe doit contenir au moins 8 caractères' }
+                    - { property: 'plainPassword', type: 'password', label: 'Confirmation du mot de passe' }
+                    - { property: 'enabled', label: 'Rendre cet utilisateur actif'}
+                    - { property: 'roles', label: 'Rôle', help: 'Vous disposez de 2 rôles possibles : ROLE_ADMIN(adminstrateur) et ROLE_USER(utilisateur simple)'}
+                    - { property: 'bio', label: 'Présentation', help: 'Cette présentation du porteur de projet apparaîtra à droite sur la page de son projet avec sa photo'}
+                    - { property: 'imageFile', label: 'Avatar utilisateur', type: 'vich_image' }
+       Article:
+         class: MMH\SiteBundle\Entity\Article
+         label: 'Articles du blog'
+         list:
+             title: 'Articles publiés'
+             fields:
+                 - { property: 'adminImage', type: 'image', base_path: %app.path.article_images%, label: 'Image' }
+                 - { property: 'title', label: 'Titre' }
+                 - { property: 'user', label: 'Utilisateur associé'}
+                 - dateCreation
+         form:
+             fields:
+                 - { property: 'title', label: 'Titre'}
+                 - { property: 'content', label: 'Votre article', type: 'ckeditor' }
+                 - { property: 'user', label: 'Auteur', type_options: { required: false }}
+       imageArticle:
+           class: MMH\SiteBundle\Entity\imageArticle
+           label: 'Images des articles'
+           list:
+                 title: 'Images associées aux articles'
+                 fields:
+                     - { property: 'path', type: 'image', base_path: %app.path.article_images%, label: 'Image' }
+                     - article
+
+
+           form:
+               fields:
+                     - { property: 'article', label: 'Article associé', type_options: { required: false }}
+                     - headImage
+                     - bodyImage
+                     - description
+                     - { property: 'imageFile', label: 'Fichier image', type: 'vich_image' }
+
+       Payment:
+         class: MMH\SiteBundle\Entity\Payment
+         label: 'Paiments'
+         list:
+             title: 'Paiements enregistrés'
+
+       imageProject:
+         class: MMH\SiteBundle\Entity\imageProject
+         label: 'Images des projets'
+         list:
+               title: 'Images associées aux projets'
+               fields:
+                   - { property: 'path', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
+                   - { property: 'project', label: 'projet'}
+                   - { property: 'headImage', label: 'Image principale'}
+                   - { property: 'localPath', label: 'url', type: 'url' }
+         form:
+             fields:
+                 - { property: 'project', label: 'Projet associé', type_options: { required: false }}
+                 - headImage
+                 - bodyImage
+                 - { property: 'imageFile', label: 'Fichier image', type: 'vich_image' }
+
+       Project:
+         class: MMH\SiteBundle\Entity\Project
+         label: 'Projets'
+         list:
+             title: 'Projets enregistrés'
+             fields:
+                 - { property: 'title', label: 'Titre du projet'}
+                 - { property: 'adminImage', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
+                 - { property: 'total', label: 'Total'}
+                 - { property: 'finalObjective', label: 'Objectif final'}
+                 - { property: 'status', type: 'boolean', label: 'En cours'}
+                 - { property: 'visibility', label: 'Visible'}
+                 - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
+                 - { property: 'slider', label: 'Carousel'}
+                 - { property: 'category', label: 'Categorie'}
+                 - { property: 'user', label: 'Utilisateur'}
+         form:
+             fields:
+                 - { property: 'title', label: "Titre du projet"}
+                 - { property: 'headline', label: "Phrase d'accroche (65 caractères max)"}
+                 - { property: 'text', label: 'texte', type: 'ckeditor' }
+                 - { property: 'finalObjective', label: "Montant à atteindre"}
+                 - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
+                # - { property: 'imageFile', type: 'file', label: 'Upload logo', help: 'Select file to upload / change logo' }
+                 - { property: 'slider', label: 'Mettre ce projet dans le slider'}
+                 - { property: 'values', label: 'Montant de dons'}
+                 - { property: 'visibility', label: 'rendre ce projet visible sur le site' }
+                 - { property: 'category', label: 'Categorie'}
+                 - { property: 'user', label: 'Porteur de projet', type_options: { required: false }}
+                 - facebook
+                 - twitter
+                 - linkedin
+                 - pinterest
+       Comment:
+         class: MMH\SiteBundle\Entity\Comment
+         label: 'Commentaires'
+         list:
+             title: 'Commentaires postés sur le site'
+             fields:
+                 - { property: 'date', label: 'Posté le', format: 'd/m/Y H:i:s' }
+                 - { property: 'author', label: 'Auteur' }
+                 - { property: 'project', label: 'Projet' }
+                 - { property: 'content', label: 'Message' }
+
+   design:
+       brand_color: '#2da555'
+
+# *******************************************************************************************************
+
+# Ivory ck editor ( rich text editor for admin)
+ivory_ck_editor:
+   default_config:                     my_custom_config    # Utiliser par defaut la configuration my_custom_config
+   configs:
+       my_custom_config:
+           language:                   %locale%
+           toolbar:                    standard
+           filebrowserBrowseRoute: elfinder
+           filebrowserBrowseRouteParameters: []
+
+
+# FOSUSER, authentification manager
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: MMH\SiteBundle\Entity\User
+
+
+    registration:
+        form:
+            type: MMH\SiteBundle\Form\RegistrationType
+
+
+# *********************************************************************************************************
+
+fm_elfinder:
+    assets_path: "/bundles" # default is /assets, this is where css/js elfinder files are
+    instances:
+        default:
+            locale: %locale% # defaults to current request locale
+            editor: ckeditor # other options are tinymce, tinymce4, fm_tinymce, form, simple, custom
+            #editor_template: custom template for your editor # default null
+            path_prefix:  http://localhost/ # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
+            #fullscreen: true|false # default is true, applies to simple and ckeditor editors
+            #theme: smoothness # jquery theme, default is 'smoothness'
+            include_assets: true # disable if you want to manage loading of javascript and css assets manually
+            visible_mime_types: ['image/png', 'image/jpg', 'image/jpeg'] # only show these mime types, defaults to show all
+            connector:
+                #debug: true|false # defaults to false
+                roots:       # at least one root must be defined, defines root filemanager directories
+                    uploads:
+                        #show_hidden: true|false # defaults to false, hides dotfiles
+                        driver: LocalFileSystem
+                        # path: var/www/html/mymoneyhelp/src/MMH/SiteBundle/Resources/public/img/projets
+                        path: bundles/mmhsite/img/projets
+                        url: ''
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                        upload_deny: ['all']
+                        upload_max_size: 2M # also file upload sizes restricted in php.ini
+                        #attributes: example of setting attributes permission
+                        #    - { pattern: '/(.*?)/', read: true, write: false, locked: true }
